@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let currentVideoQueue = [];
     let isTransitioning = false;
+    let transitionTimeout;
 
     // 動画の順番をシャッフル
     function getRandomVideo(excludeList = []) {
@@ -37,28 +38,28 @@ document.addEventListener("DOMContentLoaded", function () {
         if (isTransitioning) return;
         isTransitioning = true;
 
-        // スライドアウト効果
-        videoPlayer.classList.add("slide-out");
+        // 3秒間重ねて再生
+        videoPlayer.classList.add("overlay");
 
-        setTimeout(() => {
-            // 再生する動画をキューから取得
-            currentVideoQueue.shift();
-            videoPlayer.src = currentVideoQueue[0];
-            videoPlayer.classList.remove("slide-out");
-            videoPlayer.classList.add("slide-in");
+        // 新しい動画をキューに追加
+        const nextVideo = getRandomVideo(currentVideoQueue);
+        currentVideoQueue.push(nextVideo);
+
+        // 現在の動画の再生が終了するタイミングで次の動画を設定
+        videoPlayer.addEventListener("ended", function onEnded() {
+            videoPlayer.removeEventListener("ended", onEnded);
+            videoPlayer.classList.remove("overlay");
+            videoPlayer.src = currentVideoQueue.shift();
             videoPlayer.play();
+            isTransitioning = false;
+        }, { once: true });
 
-            // スライドインが完了したらクラスをリセット
-            setTimeout(() => {
-                videoPlayer.classList.remove("slide-in");
-                isTransitioning = false;
-            }, 1000);
+        // 次の動画の再生を遅らせる
+        setTimeout(() => {
+            videoPlayer.src = currentVideoQueue[1];
+            videoPlayer.play();
+        }, 3000); // 3秒間の重なり
 
-            // 新しい動画をランダムに追加しキューに待機させる
-            const nextVideo = getRandomVideo(currentVideoQueue);
-            currentVideoQueue.push(nextVideo);
-
-        }, 1000); // 1秒のトランジション
     }
 
     // 接続をチェックして、モバイル通信の場合は画像を表示
