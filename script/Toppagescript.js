@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     const videoPlayer = document.getElementById("videoPlayer");
     const backgroundImage = document.getElementById("backgroundImage");
 
@@ -13,8 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     let currentVideoQueue = [];
-    let isTransitioning = false;
-    let transitionTimeout;
 
     // 動画の順番をシャッフル
     function getRandomVideo(excludeList = []) {
@@ -22,10 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
         return availableVideos[Math.floor(Math.random() * availableVideos.length)];
     }
 
-    // 初期で3つの動画をキューに追加して再生準備
+    // 動画を初期読み込み
     function loadInitialVideos() {
         currentVideoQueue = [
-            getRandomVideo(),
             getRandomVideo(),
             getRandomVideo()
         ];
@@ -35,31 +32,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 次の動画をキューに追加して再生
     function playNextVideo() {
-        if (isTransitioning) return;
-        isTransitioning = true;
-
-        // 3秒間重ねて再生
-        videoPlayer.classList.add("overlay");
-
-        // 新しい動画をキューに追加
+        videoPlayer.src = currentVideoQueue[1];
+        videoPlayer.play();
+        // 2つ目の動画が再生されたら、新しい動画をランダムに追加
         const nextVideo = getRandomVideo(currentVideoQueue);
-        currentVideoQueue.push(nextVideo);
-
-        // 現在の動画の再生が終了するタイミングで次の動画を設定
-        videoPlayer.addEventListener("ended", function onEnded() {
-            videoPlayer.removeEventListener("ended", onEnded);
-            videoPlayer.classList.remove("overlay");
-            videoPlayer.src = currentVideoQueue.shift();
-            videoPlayer.play();
-            isTransitioning = false;
-        }, { once: true });
-
-        // 次の動画の再生を遅らせる
-        setTimeout(() => {
-            videoPlayer.src = currentVideoQueue[1];
-            videoPlayer.play();
-        }, 3000); // 3秒間の重なり
-
+        currentVideoQueue = [currentVideoQueue[1], nextVideo];
     }
 
     // 接続をチェックして、モバイル通信の場合は画像を表示
@@ -100,30 +77,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const line2Element = document.getElementById("line2");
 
     function updateText() {
-        // スライドアウト
-        line1Element.classList.add("slide-out");
-        line2Element.classList.add("slide-out");
-
-        setTimeout(() => {
-            // テキストを更新
-            line1Element.textContent = texts[textIndex].line1;
-            line2Element.textContent = texts[textIndex].line2;
-
-            // スライドイン
-            line1Element.classList.remove("slide-out");
-            line1Element.classList.add("slide-in");
-            line2Element.classList.remove("slide-out");
-            line2Element.classList.add("slide-in");
-
-            // スライドインが完了したらクラスをリセット
-            setTimeout(() => {
-                line1Element.classList.remove("slide-in");
-                line2Element.classList.remove("slide-in");
-            }, 1000);
-
-            // 次のテキストに進む
-            textIndex = (textIndex + 1) % texts.length;
-        }, 1000); // 1秒のトランジション
+        line1Element.textContent = texts[textIndex].line1;
+        line2Element.textContent = texts[textIndex].line2;
+        textIndex = (textIndex + 1) % texts.length;
     }
 
     updateText();
