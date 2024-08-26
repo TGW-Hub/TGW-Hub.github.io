@@ -21,12 +21,12 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function() {
     const videoPlayer = document.getElementById("videoPlayer");
     const videos = [
-        "../media/video1.mp4",
-        "../media/video2.mp4",
-        "../media/video3.mp4",
-        "../media/video4.mp4",
-        "../media/video5.mp4",
-        "../media/video6.mp4"
+        "media/video1.mp4",
+        "media/video2.mp4",
+        "media/video3.mp4",
+        "media/video4.mp4",
+        "media/video5.mp4",
+        "media/video6.mp4"
     ];
 
     function playRandomVideo() {
