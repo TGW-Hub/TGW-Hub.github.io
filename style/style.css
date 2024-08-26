@@ -89,40 +89,6 @@ h1 {
   background-color: #000000;
 }
 
-/* jsに対する指示 */
-#videoPlayer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: opacity 1s ease-in-out;
-    opacity: 1;
-    z-index: 1;
-}
-
-.overlay {
-    opacity: 0.5; /* 動画の重なりがわかりやすくなるようにする */
-}
-
-#line1, #line2 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: transform 1s ease-in-out;
-}
-
-#line1.slide-out, #line2.slide-out {
-    transform: translateX(-100%);
-}
-
-#line1.slide-in, #line2.slide-in {
-    transform: translateX(100%);
-}
-
-
-
 
 /* Over 625px */
 @media screen and (min-width: 625px) {
