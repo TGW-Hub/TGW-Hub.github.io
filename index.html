@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TGW Hub</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <div class="top" id="section1">
+        <div class="background-container">
+            <video id="videoPlayer" class="background-video" autoplay muted>
+                <source src="media/video1.mp4"type="video/mp4">
+                お使いのブラウザはvideoタグに対応していません。
+            </video>
+            <img id="backgroundImage" class="background-image" src="media/image1.webp" style="display: none;" alt="背景画像">
+            <div class="text-center">TREASURES FROM GOD’S WORD HUB</div>
+            <h1 class="rotating-text">
+                <span class="header-text" id="line1">yearText</span><br>
+                <span class="header-text" id="line2">bible</span>
+            </h1>
+            <a class="aboutus" href="http://">
+                <div class="btn">About Us</div>
+            </a>
+        </div>
+    </div>
+    <div class="section sliding-text" id="section2">
+        <div id="rotating-text">テキストAが表示されます</div>
+    </div>
+    <div class="section button-container" id="section3">
+        <button class="button">ここをクリック</button>
+    </div>
+    <script src="script/Toppagescript.js"></script>
+</body>
+</html>
