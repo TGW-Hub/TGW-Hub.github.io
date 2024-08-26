@@ -37,20 +37,20 @@ document.addEventListener("DOMContentLoaded", function () {
         if (isTransitioning) return;
         isTransitioning = true;
 
-        // フェードアウト効果
-        videoPlayer.classList.add("fade-out");
+        // スライドアウト効果
+        videoPlayer.classList.add("slide-out");
 
         setTimeout(() => {
             // 再生する動画をキューから取得
             currentVideoQueue.shift();
             videoPlayer.src = currentVideoQueue[0];
-            videoPlayer.classList.remove("fade-out");
-            videoPlayer.classList.add("fade-in");
+            videoPlayer.classList.remove("slide-out");
+            videoPlayer.classList.add("slide-in");
             videoPlayer.play();
 
-            // フェードインが完了したらクラスをリセット
+            // スライドインが完了したらクラスをリセット
             setTimeout(() => {
-                videoPlayer.classList.remove("fade-in");
+                videoPlayer.classList.remove("slide-in");
                 isTransitioning = false;
             }, 1000);
 
@@ -99,26 +99,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const line2Element = document.getElementById("line2");
 
     function updateText() {
-        // フェードアウト
-        line1Element.classList.add("fade-out");
-        line2Element.classList.add("fade-out");
+        // スライドアウト
+        line1Element.classList.add("slide-out");
+        line2Element.classList.add("slide-out");
 
         setTimeout(() => {
             // テキストを更新
             line1Element.textContent = texts[textIndex].line1;
             line2Element.textContent = texts[textIndex].line2;
 
-            // フェードイン
-            line1Element.classList.remove("fade-out");
-            line1Element.classList.add("fade-in");
-            line2Element.classList.remove("fade-out");
-            line2Element.classList.add("fade-in");
+            // スライドイン
+            line1Element.classList.remove("slide-out");
+            line1Element.classList.add("slide-in");
+            line2Element.classList.remove("slide-out");
+            line2Element.classList.add("slide-in");
 
-            // フェードインが完了したらクラスをリセット
+            // スライドインが完了したらクラスをリセット
             setTimeout(() => {
-                line1Element.classList.remove("fade-in");
-                line2Element.classList.remove("fade-in");
-            }, 2500);
+                line1Element.classList.remove("slide-in");
+                line2Element.classList.remove("slide-in");
+            }, 1000);
 
             // 次のテキストに進む
             textIndex = (textIndex + 1) % texts.length;
