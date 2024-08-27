@@ -1,0 +1,31 @@
+---
+interface Props {
+  classList?: string[],
+  id?: string,
+  pagePadding?: number | number[],
+}
+const { classList = [], pagePadding = 20, id="" } = Astro.props;
+const paddingFormat = typeof pagePadding === "number" ? pagePadding+"px" : pagePadding.join("px ") + "px";
+---
+
+<section id={id} class:list={["fullscreen", ...classList]}>
+  <div 
+    class="container" 
+    style={`padding: ${paddingFormat};`}
+  >
+    <slot/>
+  </div>
+</section>
+
+<style lang="scss">
+  .fullscreen {
+    width: 100vw;
+    min-height: 100vh;
+  }
+  .container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    transform: translate3d(0,0,0);
+  }
+</style>

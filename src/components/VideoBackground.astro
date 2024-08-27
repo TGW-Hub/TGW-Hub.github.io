@@ -1,0 +1,28 @@
+---
+import FullScreenPage from '../layouts/FullScreenPage.astro';
+---
+
+<FullScreenPage classList={["video-background"]} pagePadding={0}>
+  <video id="video-player" webkit-playsinline autoplay muted>
+    <source src="/TGW-Hub/video/video2.mp4" type="video/mp4">
+    お使いのブラウザはvideoタグに対応していません。
+  </video>
+  <slot/>
+</FullScreenPage>
+
+<style lang="scss">
+  // .video-background {
+  //   position: relative
+  // }
+  #video-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -100;
+  }
+</style>
