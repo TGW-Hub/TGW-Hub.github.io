@@ -117,7 +117,7 @@ p {
 /* Eventのcss */
 .Event {
   height: 800px;
-  background-image: url('img/event-background.jpg'); /* 画像のパス */
+  background-image: url('https://github.com/TGW-Hub/TGW-Hub/blob/main/img/event-background.jpg'); /* 画像のパス */
   background-size: cover; /* 画像がエリア全体を覆うように調整 */
   background-position: center; /* 画像の中央を表示 */
   background-repeat: no-repeat; /* 画像の繰り返しを防止 */
