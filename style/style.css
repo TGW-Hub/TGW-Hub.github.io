@@ -117,7 +117,7 @@ p {
 /* Eventのcss */
 .Event {
   height: 800px;
-  background-image: url('/img/event-background.jpg'); /* 画像のパス */
+  background-image: url('img/event-background.jpg'); /* 画像のパス */
   background-size: cover; /* 画像がエリア全体を覆うように調整 */
   background-position: center; /* 画像の中央を表示 */
   background-repeat: no-repeat; /* 画像の繰り返しを防止 */
@@ -171,7 +171,7 @@ p {
 
 .Guidelines {
   height: 400px;
-  background-image: url('/img/guidelines-background.jpg'); /* 画像のパス */
+  background-image: url('img/guidelines-background.jpg'); /* 画像のパス */
   background-size: cover; /* 画像がエリア全体を覆うように調整 */
   background-position: center; /* 画像の中央を表示 */
   background-repeat: no-repeat; /* 画像の繰り返しを防止 */
@@ -211,7 +211,7 @@ p {
 
 .managers {
   height: 800px;
-  background-image: url('/img/managers-background.jpg'); /* 画像のパス */
+  background-image: url('img/managers-background.jpg'); /* 画像のパス */
   background-size: cover; /* 画像がエリア全体を覆うように調整 */
   background-position: center; /* 画像の中央を表示 */
   background-repeat: no-repeat; /* 画像の繰り返しを防止 */
