@@ -14,7 +14,7 @@
         <div class="background-container">
             <img id="backgroundImage" class="background-image" src="media/image1.webp" style="display: none;"
                 alt="背景画像">
-            <video id="videoPlayer" class="background-video" autoplay muted>
+            <video id="videoPlayer" class="background-video" webkit-playsinline autoplay muted>
                 <source src="media/video1.mp4" type="video/mp4">
                 お使いのブラウザはvideoタグに対応していません。
             </video>
@@ -32,7 +32,7 @@
         </div>
     </header>
     <main>
-        <div class="Event">
+        <section class="Event">
             <div class="flex-box1">
                 <div class="event-text">
                     <h2>Event</h2>
@@ -42,25 +42,27 @@
                         <p class="btn2">See Event</p>
                     </a>
                 </div>
-                <div class="image-container">
+                <div class="image-container mobileNone">
                     <img class="event-img" src="img/event1.jpg" alt="event">
                 </div>
-                <div class="image-container">
+                <div class="image-container mobileNone">
                     <img class="event-img" src="img/event2.jpg" alt="event">
                 </div>
             </div>
-        </div>
-        <div class="Guidelines">
-            <div class="Gl-text">
-                <div class="Gl-border">
+        </section>
+        <section class="Guidelines">
+            <div class="flex-box3">
+                <div class="guidelines-text">
                     <h2>Guidelines</h2>
+                    <p class="text-border">最新のガイドラインを確認</p>
+                    <a class="Gl-btn" href="http://">
+                        <p class="btn3">See Our Guidelines</p>
+                    </a>
                 </div>
-                <a class="Gl-btn" href="http://">
-                    <p class="btn3">See Our Guidelines</p>
-                </a>
             </div>
-        </div>
-        <div class="managers">
+        </section>
+
+        <section class="managers">
             <div class="flex-box2">
                 <div class="mng-text">
                     <div class="mng-border">
@@ -75,10 +77,10 @@
             <div class="credit">
                 <p>&copy;2024 TGW HUB</p>
             </div>
-        </div>
+        </section>
     </main>
     <footer>
-        
+
     </footer>
 </body>
 
