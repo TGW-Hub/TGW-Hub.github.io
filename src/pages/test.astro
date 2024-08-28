@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FullScreenPage from '../layouts/FullScreenPage.astro';
+import Button from '../components/Button.astro';
+---
+
+<Layout title="Test">
+  <FullScreenPage backgroundColor='#555555'>
+    <Button buttonText="click me" size='m' theme="dark"/>
+    <Button buttonText="click me" uppercase size='s'/>
+    <Button 
+      buttonText="click me" 
+      uppercase size='l' 
+      theme={{ type: "primary", color: "#0098f0" }}
+    />
+    <Button 
+      buttonText="click me" 
+      uppercase size='s' 
+      theme={{ type: "outline", color: "#22bf20" }}
+    />
+    <Button 
+      buttonText="click me" 
+      uppercase size='l' 
+      borderRadius={20}
+      theme="light"
+    />
+  </FullScreenPage>
+</Layout>
+
+<style lang="scss">
+  .dark {
+    background-color: #555555 !important;
+  }
+</style>

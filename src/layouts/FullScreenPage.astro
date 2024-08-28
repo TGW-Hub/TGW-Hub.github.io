@@ -1,14 +1,13 @@
 ---
 interface Props {
-  classList?: string[],
-  id?: string,
+  backgroundColor?: string,
   pagePadding?: number | number[],
 }
-const { classList = [], pagePadding = 20, id="" } = Astro.props;
+const { pagePadding = 20, backgroundColor } = Astro.props;
 const paddingFormat = typeof pagePadding === "number" ? pagePadding+"px" : pagePadding.join("px ") + "px";
 ---
 
-<section id={id} class:list={["fullscreen", ...classList]}>
+<section class="fullscreen" style={`--bg-color: ${backgroundColor};`}>
   <div 
     class="container" 
     style={`padding: ${paddingFormat};`}
@@ -21,6 +20,7 @@ const paddingFormat = typeof pagePadding === "number" ? pagePadding+"px" : pageP
   .fullscreen {
     width: 100vw;
     min-height: 100vh;
+    background-color: var(--bg-color);
   }
   .container {
     width: 100vw;
