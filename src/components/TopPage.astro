@@ -1,20 +1,51 @@
 ---
 import VideoBackground from './VideoBackground.astro';
 import ScriptureOfTheYear from './ScriptureOfTheYear.astro';
+import Button from './Button.astro';
 ---
 
 <VideoBackground>
-  <div class="website-name">
-    <h3 class="pacifico-cursive">treasures from god's word hub</h3>
+  <div class="wrapper">
+    <div class="website-name">
+      <h3 class="pacifico-cursive">treasures from god's word hub</h3>
+    </div>
+    <ScriptureOfTheYear/>
+    <div class="button-container">
+      <Button 
+        buttonText='about us'
+        uppercase
+        size="l"
+        theme={{
+          type: "primary",
+          color: "#34b0e5",
+        }}
+      />
+    </div>
   </div>
-  <ScriptureOfTheYear/>
 </VideoBackground>
 
 <style lang="scss">
+  .wrapper {
+    padding: 4rem 0;
+    width: 80vw;
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgb(30, 184, 255),
+                  4px 2px 8px #6af3ff;
+  }
   .website-name {
+    margin-bottom: 4rem;
     h3 {
       font-size: var(--header-small);
       text-transform: uppercase;
+      word-spacing: 10px;
     }
+  }
+  .button-container {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
   }
 </style>

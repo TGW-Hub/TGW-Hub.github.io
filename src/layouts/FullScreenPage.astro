@@ -1,16 +1,15 @@
 ---
 interface Props {
   backgroundColor?: string,
-  pagePadding?: number | number[],
+  pagePadding?: string,
 }
-const { pagePadding = 20, backgroundColor } = Astro.props;
-const paddingFormat = typeof pagePadding === "number" ? pagePadding+"px" : pagePadding.join("px ") + "px";
+const { pagePadding = "20px", backgroundColor } = Astro.props;
 ---
 
 <section class="fullscreen" style={`--bg-color: ${backgroundColor};`}>
   <div 
     class="container" 
-    style={`padding: ${paddingFormat};`}
+    style={`padding: ${pagePadding};`}
   >
     <slot/>
   </div>
