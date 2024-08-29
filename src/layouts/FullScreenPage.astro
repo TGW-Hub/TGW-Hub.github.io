@@ -1,0 +1,30 @@
+---
+interface Props {
+  backgroundColor?: string,
+  pagePadding?: string,
+}
+const { pagePadding = "20px", backgroundColor } = Astro.props;
+---
+
+<section class="fullscreen" style={`--bg-color: ${backgroundColor};`}>
+  <div 
+    class="container" 
+    style={`padding: ${pagePadding};`}
+  >
+    <slot/>
+  </div>
+</section>
+
+<style lang="scss">
+  .fullscreen {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+  }
+  .container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    transform: translate3d(0,0,0);
+  }
+</style>

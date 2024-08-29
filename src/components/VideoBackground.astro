@@ -1,0 +1,61 @@
+---
+import FullScreenPage from '../layouts/FullScreenPage.astro';
+---
+
+<FullScreenPage pagePadding="0">
+  <video id="video-player" webkit-playsinline autoplay muted>
+    <source src="/TGW-Hub/video/video2.mp4" type="video/mp4">
+    お使いのブラウザはvideoタグに対応していません。
+  </video>
+  <slot/>
+</FullScreenPage>
+
+<script>
+  const videoPlayer: HTMLVideoElement = document.getElementById("video-player");
+  const sources = []
+  const numberOfVideos = 6;
+  for(let i=1; i<=numberOfVideos; i++) {
+    sources.push({
+      src: `/TGW-Hub/video/video${i}.mp4`,
+      type: "video/mp4"
+    })
+  }
+
+  let currentIndex = 0;
+    
+  videoPlayer.onended = function() {
+    currentIndex++;
+    currentIndex %= numberOfVideos;
+    loadAndPlayVideo(videoPlayer, sources[currentIndex]);
+    videoPlayer.play();
+  }
+
+  function loadAndPlayVideo(videoElement: HTMLVideoElement, source) {
+    const sourceElement: HTMLSourceElement = document.createElement("source");
+    sourceElement.src = source.src;
+    sourceElement.type = sourceElement.type;
+
+    // while(true){}
+    videoElement.innerHTML = "";
+    videoElement.appendChild(sourceElement)
+
+    videoElement.load();
+    videoElement.play();
+  }
+  loadAndPlayVideo(videoPlayer, sources[currentIndex]);
+</script>
+
+<style lang="scss">
+  #video-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -100;
+    filter: brightness(.4);
+  }
+</style>
