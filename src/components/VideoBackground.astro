@@ -11,7 +11,7 @@ import FullScreenPage from '../layouts/FullScreenPage.astro';
 </FullScreenPage>
 
 <script>
-  const videoPlayer: HTMLVideoElement = document.getElementById("video-player");
+  const videoPlayer = document.getElementById("video-player") as HTMLVideoElement;
   const sources = []
   const numberOfVideos = 6;
   for(let i=1; i<=numberOfVideos; i++) {
