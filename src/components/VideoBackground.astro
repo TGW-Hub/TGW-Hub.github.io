@@ -11,9 +11,11 @@ import FullScreenPage from '../layouts/FullScreenPage.astro';
 </FullScreenPage>
 
 <script>
-  const videoPlayer: HTMLVideoElement = document.getElementById("video-player");
-  const sources = []
+  const videoPlayer = document.getElementById("video-player") as HTMLVideoElement;
   const numberOfVideos = 6;
+
+  type SOURCE_TYPE = { src: string, type: string }
+  const sources: Array<SOURCE_TYPE> = [];
   for(let i=1; i<=numberOfVideos; i++) {
     sources.push({
       src: `/TGW-Hub/video/video${i}.mp4`,
@@ -30,10 +32,10 @@ import FullScreenPage from '../layouts/FullScreenPage.astro';
     videoPlayer.play();
   }
 
-  function loadAndPlayVideo(videoElement: HTMLVideoElement, source) {
+  function loadAndPlayVideo(videoElement: HTMLVideoElement, source: SOURCE_TYPE) {
     const sourceElement: HTMLSourceElement = document.createElement("source");
     sourceElement.src = source.src;
-    sourceElement.type = sourceElement.type;
+    sourceElement.type = source.type;
 
     // while(true){}
     videoElement.innerHTML = "";
