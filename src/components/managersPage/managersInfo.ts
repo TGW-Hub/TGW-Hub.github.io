@@ -1,5 +1,5 @@
-import KazushiImage from "./images/Kazushi.jpg";
-import TakumiImage from "./images/Takumi.jpg";
+import KazushiImage from "./images/kazushi.jpg";
+import TakumiImage from "./images/takumi.jpg";
 import MikiyaImage from "./images/mikiya.jpg";
 import ShunImage from "./images/shun.jpg";
 
