@@ -7,7 +7,6 @@ interface Props {
   link?: string,
   size?: "s" | "m" | "l",
   theme?: "light" | "dark" | { type: "primary" | "outline", color: string },
-  classList?: string[],
 }
 
 const { 
@@ -17,7 +16,6 @@ const {
   link = "#",
   size = "m",
   theme = "light",
-  classList = [],
 } = Astro.props;
 
 const formattedTheme = typeof theme === "string" ? theme : theme.type;
@@ -37,7 +35,7 @@ const formattedStyle = `
     type="button" 
     value={buttonText} 
     class:list={
-      [size, ...classList, formattedTheme]
+      [size, formattedTheme]
     }
     style={formattedStyle}
   />
