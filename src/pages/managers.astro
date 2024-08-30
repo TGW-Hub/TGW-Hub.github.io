@@ -1,12 +1,34 @@
 ---
-import FullScreenPage from "../layouts/FullScreenPage.astro"
-import Button from "../components/Button.astro"
-import KazushiImg from "../components/managersPage/KazushiImg.astro"
-import TakumiImg from "../components/managersPage/TakumiIng.astro"
-import MikiyaImg from "../components/managersPage/mikiyaImg.astro"
+import Layout from "../layouts/Layout.astro";
+import FullScreenPage from "../layouts/FullScreenPage.astro";
+import IntroductionBox from "../components/managersPage/IntroductionBox.astro";
+import { members } from "../components/managersPage/managersInfo";
 ---
+
+<Layout>
 <FullScreenPage>
-    <KazushiImg/>
-    <MikiyaImg/>
-    <TakumiImg/>
+    <div class="box-container">
+    {
+        Object.entries(members).map( ([k, { imageSrc, name, borned, introduction, lineAccountLink, role }]) => (
+            <IntroductionBox 
+                src={imageSrc}
+                introducingWord={introduction}
+                fullname={name}
+                borned={borned}
+                lineAccountLink={lineAccountLink}
+                role={role}
+            />
+        ))
+    }
+    </div>
 </FullScreenPage>
+</Layout>
+
+<style lang="scss">
+    .box-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+</style>

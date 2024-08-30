@@ -1,0 +1,44 @@
+---
+import { Icon } from "astro-icon/components";
+import formattedBirthdayString from "./formattedBirthdayString";
+import "./IntroductionBox.scss";
+
+interface Props {
+  src: any,
+  introducingWord: string,
+  borned: [number, number, number],
+  fullname: string,
+  role: RoleType,
+  lineAccountLink: string,
+}
+type RoleType = "管理者" | "企画者" | "開発者"
+
+const { src, introducingWord, borned, fullname, role, lineAccountLink } = Astro.props;
+const formattedBirthday = formattedBirthdayString(borned);
+const roleColor: { [key in RoleType]: string } = {
+  "管理者": "#009ef3",
+  "企画者": "#8e26e5",
+  "開発者": "#c41b60"
+}
+---
+
+<div class="introduction-box">
+  <figure class="img-wrapper" data-role={role} style={`--role-color: ${roleColor[role]};`}>
+    <img src={src} alt="image">
+  </figure>
+  <div class="content-wrapper">
+    <div>
+      <h4 class="japanese-custom-font">{fullname} ー {formattedBirthday}</h4>
+      <h5 class="japanese-custom-font">{introducingWord}</h5>
+    </div>
+    <div class="icon-container">
+      <a href={lineAccountLink} target="_blank">
+        <Icon 
+        name="hugeicons:line" 
+        color="#00b009"
+        size={35}
+        />
+      </a>
+    </div>
+  </div>
+</div>

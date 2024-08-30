@@ -1,5 +1,6 @@
 ---
 import '@fontsource/pacifico';
+import '@fontsource/rocknroll-one';
 
 interface Props {
 	title?: string;
@@ -20,9 +21,22 @@ const { title = "TGW Hub" } = Astro.props;
 	</head>
 	<body>
 		<slot />
+		<script>
+			const body = document.getElementsByTagName("body")[0];
+			const root = document.documentElement;
+			if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				// User prefers dark mode
+				body.className = "dark-mode";
+				root.style.setProperty('--html-bg-color', '#1d1d1d')
+			} else {
+    		// User prefers light mode
+				body.className = "light-mode";
+				root.style.setProperty('--html-bg-color', '#f9f9f9');
+			}
+		</script>
 	</body>
 </html>
-<style is:global>
+<style is:global lang="scss">
 	:root {
 		--header-large: 40px;
 		--header-medium: 30px;
@@ -45,7 +59,7 @@ const { title = "TGW Hub" } = Astro.props;
 	}
 	html {
 		font-family: system-ui, sans-serif;
-		background: #cfd4a4;
+		background: var(--html-bg-color);
 	}
 	code {
 		font-family:
@@ -60,6 +74,9 @@ const { title = "TGW Hub" } = Astro.props;
 	}
 	.pacifico-cursive {
 		font-family: 'Pacifico', cursive;
+	}
+	.japanese-custom-font {
+		font-family: 'RocknRoll One', sans-serif;
 	}
 	.page-header {
 		text-transform: uppercase;
