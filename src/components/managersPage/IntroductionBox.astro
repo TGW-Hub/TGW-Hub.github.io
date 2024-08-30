@@ -22,10 +22,12 @@ const roleColor: { [key in RoleType]: string } = {
 }
 ---
 
-<div class="introduction-box">
-  <figure class="img-wrapper" data-role={role} style={`--role-color: ${roleColor[role]};`}>
-    <img src={src} alt="image">
-  </figure>
+<div class="introduction-box" data-role={role} style={`--role-color: ${roleColor[role]}`}>
+  <span class="img-container">
+    <figure class="img-wrapper" data-role={role}>
+      <img src={src} alt="image">
+    </figure>
+  </span>
   <div class="content-wrapper">
     <div>
       <h4 class="japanese-custom-font">{fullname} ー {formattedBirthday}</h4>
