@@ -1,30 +1,53 @@
 ---
-import VideoBackground from './VideoBackground.astro';
+// import VideoBackground from './VideoBackground.astro';
+import FullScreenPage from '../../layouts/FullScreenPage.astro';
 import ScriptureOfTheYear from '../ScriptureOfTheYear.astro';
 import Button from '../Button.astro';
 ---
 
-<VideoBackground>
-  <div class="wrapper">
-    <div class="website-name">
-      <h3 class="pacifico-cursive">treasures from god's word hub</h3>
-    </div>
-    <ScriptureOfTheYear/>
-    <div class="button-container">
-      <Button 
+<FullScreenPage pagePadding="0px">
+  <div class="background">
+    <div class="wrapper">
+      <div class="website-name">
+        <h3 class="pacifico-cursive">treasures from god's word hub</h3>
+      </div>
+      <ScriptureOfTheYear/>
+      <div class="button-container">
+        <Button 
         buttonText='about us'
         uppercase
         size="l"
         theme={{
           type: "primary",
           color: "#34b0e5",
-        }}
-      />
+        }} 
+        />
+      </div>
     </div>
   </div>
-</VideoBackground>
+</FullScreenPage>
 
 <style lang="scss">
+  .background {
+    width: 100vw;
+    height: 100vh;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background: url("../../images/forest.jpg") center center/cover no-repeat;
+      object-fit: cover;
+      filter: brightness(.55);
+      mask-image: linear-gradient(to top, transparent, rgba(0,0,0,1));
+      z-index: -100; 
+    }
+  }
   .wrapper {
     padding: 4rem 0;
     width: 80vw;
@@ -32,6 +55,8 @@ import Button from '../Button.astro';
     margin: auto;
     text-align: center;
     color: white;
+    position: relative;
+    transform: translate3d(0,0,0);
     text-shadow: 2px 2px 4px rgb(30, 184, 255),
                   4px 2px 8px #6af3ff;
   }
