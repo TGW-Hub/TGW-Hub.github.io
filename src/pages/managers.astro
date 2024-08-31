@@ -9,7 +9,7 @@ import { members } from "../components/managersPage/managersInfo";
 <FullScreenPage>
     <div class="box-container">
     {
-        Object.entries(members).map( ([k, { imageSrc, name, borned, introduction, lineAccountLink, roles }]) => (
+        Object.entries(members).map( ([i, { imageSrc, name, borned, introduction, lineAccountLink, roles }]) => (
             <IntroductionBox 
                 src={imageSrc}
                 introducingWord={introduction}
