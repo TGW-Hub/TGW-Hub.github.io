@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import formattedBirthdayString from "./formattedBirthdayString";
+import type { RoleType } from "./managersInfo";
 import "./IntroductionBox.scss";
 
 interface Props {
@@ -8,23 +9,32 @@ interface Props {
   introducingWord: string,
   borned: [number, number, number],
   fullname: string,
-  role: RoleType,
+  roles: Array<RoleType>,
   lineAccountLink: string,
 }
-type RoleType = "管理者" | "企画者" | "開発者"
 
-const { src, introducingWord, borned, fullname, role, lineAccountLink } = Astro.props;
+const { src, introducingWord, borned, fullname, roles, lineAccountLink } = Astro.props;
 const formattedBirthday = formattedBirthdayString(borned);
-const roleColor: { [key in RoleType]: string } = {
-  "管理者": "#009ef3",
-  "企画者": "#8e26e5",
-  "開発者": "#c41b60"
+// https://cssgradient.io
+const roleColor: { [key in typeof roles[number]]: string } = {
+  "マネージャー": "#009ef3",
+  "デベロッパー": "#8e26e5"
 }
+const sortedRoles = roles.sort();
 ---
 
-<div class="introduction-box" data-role={role} style={`--role-color: ${roleColor[role]}`}>
+<div class="introduction-box">
+  <div class="roles-container">
+    { 
+      sortedRoles.map(roleName => (
+        <div class="role" style={`--role-color: ${roleColor[roleName]};`}>
+          <span>{roleName}</span>
+        </div>
+      ))
+    }
+  </div>
   <span class="img-container">
-    <figure class="img-wrapper" data-role={role}>
+    <figure class="img-wrapper">
       <img src={src} alt="image">
     </figure>
   </span>
