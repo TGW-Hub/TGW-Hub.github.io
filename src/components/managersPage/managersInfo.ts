@@ -1,8 +1,8 @@
-import KazushiKondoImage from "./images/kazushi-kondo.jpg";
-import TakumiSanoImage from "./images/takumi-sano.jpg";
-import MikiyaSakodaImage from "./images/mikiya-sakoda.jpg";
-import ShunIwashitaImage from "./images/shun-iwashita.jpg";
-import HarukiNebuImage from "./images/haruki-nebu.jpg";
+import KazushiKondoImage from "./images/kazushi-kondo.jpg?hash";
+import TakumiSanoImage from "./images/takumi-sano.jpg?hash";
+import MikiyaSakodaImage from "./images/mikiya-sakoda.jpg?hash";
+import ShunIwashitaImage from "./images/shun-iwashita.jpg?hash";
+import HarukiNebuImage from "./images/haruki-nebu.jpg?hash";
 
 import getIntroduction from "./getIntroduction";
 
