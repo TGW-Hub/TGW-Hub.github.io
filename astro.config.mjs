@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 import icon from "astro-icon";
-import image from "@astrojs/image"
+import { imagetools } from "vite-imagetools";
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,6 +10,10 @@ export default defineConfig({
   },
   integrations: [
     icon(),
-    image(),
-  ]
+  ],
+  vite: {
+    plugins: [
+      imagetools(),
+    ]
+  }
 });
