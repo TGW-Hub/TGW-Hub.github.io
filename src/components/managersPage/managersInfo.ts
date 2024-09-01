@@ -20,7 +20,7 @@ export const members: {
   [member: string]: MemberProps
 } = {
   kazushiKondo: {
-    imageSrc: KazushiKondoImage.src,
+    imageSrc: KazushiKondoImage,
     borned: [2005, 12, 5],
     name: "近藤和志",
     lineAccountLink: "#",
@@ -28,7 +28,7 @@ export const members: {
     introduction: getIntroduction("kazushi-kondo.txt"),
   },
   takumiSano: {
-    imageSrc: TakumiSanoImage.src,
+    imageSrc: TakumiSanoImage,
     borned: [2007, 10, 31],
     name: "佐野拓海",
     lineAccountLink: "#",
@@ -36,7 +36,7 @@ export const members: {
     introduction: getIntroduction("takumi-sano.txt"),
   },
   mikiyaSakoda: {
-    imageSrc: MikiyaSakodaImage.src,
+    imageSrc: MikiyaSakodaImage,
     borned: [2006, 9, 6],
     name: "迫田樹也",
     lineAccountLink: "https://line.me/ti/p/ONTZieTwqd",
@@ -44,7 +44,7 @@ export const members: {
     introduction: getIntroduction("mikiya-sakoda.txt")
   },
   shunIwashita: {
-    imageSrc: ShunIwashitaImage.src,
+    imageSrc: ShunIwashitaImage,
     borned: [2005, 5, 19],
     name: "岩下俊",
     lineAccountLink: "",
@@ -52,7 +52,7 @@ export const members: {
     introduction: getIntroduction("shun-iwashita.txt")
   },
   harukiNebu: {
-    imageSrc: HarukiNebuImage.src,
+    imageSrc: HarukiNebuImage,
     borned: [2006, 12, 19],
     name: "根布晴希",
     lineAccountLink: "",
