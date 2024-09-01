@@ -13,7 +13,13 @@ export default defineConfig({
   ],
   vite: {
     plugins: [
-      imagetools(),
+      imagetools({
+        defaultDirectives: (url) => {
+          return new URLSearchParams({
+            name: `tgw-images-${Date.now()}-[hash]`
+          })
+        }
+      }),
     ]
   }
 });
