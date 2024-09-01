@@ -1,4 +1,4 @@
-import KazushiImage from "./images/kazushi.jpg";
+import KazushiKondoImage from "./images/kazushi.jpg";
 import TakumiImage from "./images/takumi.jpg";
 import MikiyaImage from "./images/mikiya.jpg";
 import ShunImage from "./images/shun.jpg";
@@ -18,7 +18,7 @@ export const members: {
   }
 } = {
   kazushi: {
-    imageSrc: KazushiImage.src,
+    imageSrc: KazushiKondoImage.src,
     borned: [2005, 12, 5],
     name: "近藤和志",
     lineAccountLink: "#",
@@ -30,7 +30,7 @@ export const members: {
     borned: [2007, 10, 31],
     name: "佐野拓海",
     lineAccountLink: "#",
-    roles: ["デベロッパー"],
+    roles: ["マネージャー"],
     introduction: getIntroduction("takumi.txt"),
   },
   mikiya: {

@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@altano/tiny-async-pool@^1.0.2":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@altano/tiny-async-pool/-/tiny-async-pool-1.0.3.tgz#be270212db56d60e633d4fb4ef9f04809ee6bc54"
+  integrity sha512-B4lSen5B2M/aGtgQ12aJ9Ms4eZXCRtJMhM7p5KpAImPAeIaOojTWEKozIB/1xWwCLRZsy0SHW+OlOZQFOBOwJQ==
+
 "@ampproject/remapping@^2.2.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.3.0.tgz#ed441b6fa600072520ce18b43d2c8cc8caecc7f4"
@@ -38,6 +43,18 @@
   version "2.10.3"
   resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-2.10.3.tgz#852386445029f7765a70b4c1d1140e175e1d8c27"
   integrity sha512-bL/O7YBxsFt55YHU021oL+xz+B/9HvGNId3F9xURN16aeqDK9juHGktdkCSXz+U4nqFACq6ZFvWomOzhV+zfPw==
+
+"@astrojs/image@^0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@astrojs/image/-/image-0.18.0.tgz#db457da3667a58782f0e099033d9740a0072ff6c"
+  integrity sha512-IAsECAGG5s0u7KItQMVVfhU8gAkIeIlzoSga6LymLvWvTWJacjxtnRYjct5uR03kuxIYAdjZhwQowKR1bYpwDA==
+  dependencies:
+    "@altano/tiny-async-pool" "^1.0.2"
+    http-cache-semantics "^4.1.1"
+    image-size "^1.0.2"
+    kleur "^4.1.5"
+    magic-string "^0.30.2"
+    mime "^3.0.0"
 
 "@astrojs/internal-helpers@0.4.1":
   version "0.4.1"
@@ -901,31 +918,31 @@
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
 "@volar/kit@~2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@volar/kit/-/kit-2.4.0.tgz#b5ad559db43edcf7c85e645e58bd1b9e9f3a50ca"
-  integrity sha512-uqwtPKhrbnP+3f8hs+ltDYXLZ6Wdbs54IzkaPocasI4aBhqWLht5qXctE1MqpZU52wbH359E0u9nhxEFmyon+w==
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@volar/kit/-/kit-2.4.1.tgz#d45d6a1360a1307351ce51ba0cbe6cbc0e06f1c6"
+  integrity sha512-XCHjrxcvjh/GEBiJt2e1KfsP8aQ+z7ZXRKR/5BA2/SFVzM+pKpL9iHZZJN7QGMsqTOt8FgN8XQhTp8qqURn+cw==
   dependencies:
-    "@volar/language-service" "2.4.0"
-    "@volar/typescript" "2.4.0"
+    "@volar/language-service" "2.4.1"
+    "@volar/typescript" "2.4.1"
     typesafe-path "^0.2.2"
     vscode-languageserver-textdocument "^1.0.11"
     vscode-uri "^3.0.8"
 
-"@volar/language-core@2.4.0", "@volar/language-core@~2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@volar/language-core/-/language-core-2.4.0.tgz#962efc66ff9198ee2412786e99528bf77cdad100"
-  integrity sha512-FTla+khE+sYK0qJP+6hwPAAUwiNHVMph4RUXpxf/FIPKUP61NFrVZorml4mjFShnueR2y9/j8/vnh09YwVdH7A==
+"@volar/language-core@2.4.1", "@volar/language-core@~2.4.0":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@volar/language-core/-/language-core-2.4.1.tgz#267984b2b06908b78f1c016392fc75b75516595b"
+  integrity sha512-9AKhC7Qn2mQYxj7Dz3bVxeOk7gGJladhWixUYKef/o0o7Bm4an+A3XvmcTHVqZ8stE6lBVH++g050tBtJ4TZPQ==
   dependencies:
-    "@volar/source-map" "2.4.0"
+    "@volar/source-map" "2.4.1"
 
 "@volar/language-server@~2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@volar/language-server/-/language-server-2.4.0.tgz#717727df01e0c3da544d7171c9d5b88691b396fb"
-  integrity sha512-rmGIjAxWekWQiGH97Mosb4juiD/hfFYNQKV5Py9r7vDOLSkbIwRhITbwHm88NJKs8P6TNc6w/PfBXN6yjKadJg==
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@volar/language-server/-/language-server-2.4.1.tgz#8b7d07714f9c1c5087fb76fe9f06cb88c71c7c52"
+  integrity sha512-aVaUjuQEPFJZckNwziCqrmiirsVnV3LK9Kbl1Hq5C4G6RTyof2xSdYKwyL2Azv41DkgkW85lJ2F6zVX3cpQfzw==
   dependencies:
-    "@volar/language-core" "2.4.0"
-    "@volar/language-service" "2.4.0"
-    "@volar/typescript" "2.4.0"
+    "@volar/language-core" "2.4.1"
+    "@volar/language-service" "2.4.1"
+    "@volar/typescript" "2.4.1"
     path-browserify "^1.0.1"
     request-light "^0.7.0"
     vscode-languageserver "^9.0.1"
@@ -933,27 +950,27 @@
     vscode-languageserver-textdocument "^1.0.11"
     vscode-uri "^3.0.8"
 
-"@volar/language-service@2.4.0", "@volar/language-service@~2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@volar/language-service/-/language-service-2.4.0.tgz#56f14e6888fe63f6beb1ed67d2dfc84877c251d0"
-  integrity sha512-4P3yeQXIL68mLfS3n6P3m02IRg3GnLHUU9k/1PCHEfm5FG9bySkDOc72dbBn2vAa2BxOqm18bmmZXrsWuQ5AOw==
+"@volar/language-service@2.4.1", "@volar/language-service@~2.4.0":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@volar/language-service/-/language-service-2.4.1.tgz#a1de7b0c03589450373277275fc7441e9e22bbff"
+  integrity sha512-Q3NVjZTAz0Vnco70Rgcryq2eDPWkFBdpzr84aYqOGvVC4SBjq1Wsx0d9NyA4seQHfHWwbZyzyviKRm+htyRlKg==
   dependencies:
-    "@volar/language-core" "2.4.0"
+    "@volar/language-core" "2.4.1"
     vscode-languageserver-protocol "^3.17.5"
     vscode-languageserver-textdocument "^1.0.11"
     vscode-uri "^3.0.8"
 
-"@volar/source-map@2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@volar/source-map/-/source-map-2.4.0.tgz#b6690f06c600eaf587bbc81b0153203e4f6db72a"
-  integrity sha512-2ceY8/NEZvN6F44TXw2qRP6AQsvCYhV2bxaBPWxV9HqIfkbRydSksTFObCF1DBDNBfKiZTS8G/4vqV6cvjdOIQ==
+"@volar/source-map@2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@volar/source-map/-/source-map-2.4.1.tgz#6a6d02b9dac66a5dd99378dcdae63107a0b45fce"
+  integrity sha512-Xq6ep3OZg9xUqN90jEgB9ztX5SsTz1yiV8wiQbcYNjWkek+Ie3dc8l7AVt3EhDm9mSIR58oWczHkzM2H6HIsmQ==
 
-"@volar/typescript@2.4.0", "@volar/typescript@~2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@volar/typescript/-/typescript-2.4.0.tgz#f909d20dfe43dd846d30695f6e5467276ff4418e"
-  integrity sha512-9zx3lQWgHmVd+JRRAHUSRiEhe4TlzL7U7e6ulWXOxHH/WNYxzKwCvZD7WYWEZFdw4dHfTD9vUR0yPQO6GilCaQ==
+"@volar/typescript@2.4.1", "@volar/typescript@~2.4.0":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@volar/typescript/-/typescript-2.4.1.tgz#6285f29b36c58769ccc14153f329d11e89ee13bc"
+  integrity sha512-UoRzC0PXcwajFQTu8XxKSYNsWNBtVja6Y9gC8eLv7kYm+UEKJCcZ8g7dialsOYA0HKs3Vpg57MeCsawFLC6m9Q==
   dependencies:
-    "@volar/language-core" "2.4.0"
+    "@volar/language-core" "2.4.1"
     path-browserify "^1.0.1"
     vscode-uri "^3.0.8"
 
@@ -1654,7 +1671,12 @@ esbuild@^0.21.3, esbuild@^0.21.5:
     "@esbuild/win32-ia32" "0.21.5"
     "@esbuild/win32-x64" "0.21.5"
 
-escalade@^3.1.1, escalade@^3.1.2:
+escalade@^3.1.1:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/escalade/-/escalade-3.2.0.tgz#011a3f69856ba189dffa7dc8fcce99d2a87903e5"
+  integrity sha512-WUj2qlxaQtO4g6Pq5c29GTcWGDyd8itL8zTlipgECz3JesAiiOKotd8JU6otB3PACgG6xkJUyVhboMS+bje/jA==
+
+escalade@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/escalade/-/escalade-3.1.2.tgz#54076e9ab29ea5bf3d8f1ed62acffbb88272df27"
   integrity sha512-ErCHMCae19vR8vQGe50xIsVomy19rg6gFu3+r3jkEO46suLMWBksvVyoGgQV+jOfl84ZSOSlmv6Gxa89PmTGmA==
@@ -2041,6 +2063,13 @@ iconv-lite@0.6.3, iconv-lite@^0.6.3:
   dependencies:
     safer-buffer ">= 2.1.2 < 3.0.0"
 
+image-size@^1.0.2:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/image-size/-/image-size-1.1.1.tgz#ddd67d4dc340e52ac29ce5f546a09f4e29e840ac"
+  integrity sha512-541xKlUw6jr/6gGuk92F+mYM5zaFAc5ahphvkqvNe2bQ6gVBkd6bfrmVJ2t4KDAfikAYZyIqTnktX3i6/aQDrQ==
+  dependencies:
+    queue "6.0.2"
+
 immutable@^4.0.0:
   version "4.3.7"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.3.7.tgz#c70145fc90d89fb02021e65c84eb0226e4e5a381"
@@ -2050,6 +2079,11 @@ import-meta-resolve@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/import-meta-resolve/-/import-meta-resolve-4.1.0.tgz#f9db8bead9fafa61adb811db77a2bf22c5399706"
   integrity sha512-I6fiaX09Xivtk+THaMfAwnA3MVA5Big1WHF1Dfx9hFuvNIWpXnorlkzhcQf6ehrqQiiZECRt1poOAkPmer3ruw==
+
+inherits@~2.0.3:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
+  integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
 
 is-arrayish@^0.3.1:
   version "0.3.2"
@@ -2259,7 +2293,7 @@ luxon@^3.5.0:
   resolved "https://registry.yarnpkg.com/luxon/-/luxon-3.5.0.tgz#6b6f65c5cd1d61d1fd19dbf07ee87a50bf4b8e20"
   integrity sha512-rh+Zjr6DNfUYR3bPwJEnuwDdqMbxZW7LOQfUN4B54+Cl+0o5zaU9RJ6bcidfDtC1cWCZXQ+nvX8bf6bAji37QQ==
 
-magic-string@^0.30.11:
+magic-string@^0.30.11, magic-string@^0.30.2:
   version "0.30.11"
   resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.30.11.tgz#301a6f93b3e8c2cb13ac1a7a673492c0dfd12954"
   integrity sha512-+Wri9p0QHMy+545hKww7YAu5NyzF8iomPL/RQazugQ9+Ez4Ic3mERMd8ZTX5rfK944j+560ZJi8iAwgak1Ac7A==
@@ -2730,6 +2764,11 @@ mime-types@^2.1.12:
   dependencies:
     mime-db "1.52.0"
 
+mime@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/mime/-/mime-3.0.0.tgz#b374550dca3a0c18443b0c950a6a58f1931cf7a7"
+  integrity sha512-jSCU7/VB1loIWBZe14aEYHU/+1UMEHoaO7qxCOVJOw9GgH72VAWppxNcjU+x9a2k3GSIBXNKxXQFqRvvZ7vr3A==
+
 mimic-fn@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/mimic-fn/-/mimic-fn-4.0.0.tgz#60a90550d5cb0b239cca65d893b1a53b29871ecc"
@@ -3074,6 +3113,13 @@ queue-microtask@^1.2.2:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
+
+queue@6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/queue/-/queue-6.0.2.tgz#b91525283e2315c7553d2efa18d83e76432fed65"
+  integrity sha512-iHZWu+q3IdFZFX36ro/lKBkSvfkztY5Y7HMiPlOUjhupPcG2JMfst2KKEpu5XndviX/3UhFbRngUPNKtgvtZiA==
+  dependencies:
+    inherits "~2.0.3"
 
 readdirp@~3.6.0:
   version "3.6.0"
