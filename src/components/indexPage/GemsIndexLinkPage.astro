@@ -1,0 +1,134 @@
+---
+import FullScreenPage from "../../layouts/FullScreenPage.astro";
+---
+
+<FullScreenPage>
+  <h1 class="page-header">Gems Index</h1>
+  <div class="gemContent">
+    <span class="linkBody">
+      <h2 class="title">Gems Index</h2>
+      <p>
+        TGWに寄せられた宝の索引<br
+        />グループ開設から現在までのすべてのコメントがここに
+      </p>
+      <a class="tgwLink" href="https://kondo-kazushi.github.io/tgw-index"
+        >Check Now</a
+      >
+    </span>
+    <img class="bibleImage" src="src/images/openBible.webp" />
+  </div>
+</FullScreenPage>
+
+<style lang="scss">
+  :root {
+    font-family: "ヒラギノ丸ゴ ProN";
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      background-color: #000b1c;
+      color: #fff;
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      background-color: #fffdfa;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .tgwLink {
+      color: black;
+      background-color: white;
+      border: 2px solid black;
+    }
+    @media screen and (min-width: 500px) {
+      .tgwLink:hover {
+        color: white;
+        background: black;
+        border: 2px solid white;
+      }
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    .tgwLink {
+      color: white;
+      background-color: black;
+      border: 2px solid white;
+    }
+
+    @media screen and (min-width: 500px) {
+      .tgwLink:hover {
+        color: black;
+        background: white;
+        border: 2px solid black;
+      }
+    }
+  }
+
+  @media screen and (min-width: 735px) {
+    .gemContent {
+      flex-direction: row;
+      justify-content: space-around;
+    }
+
+    .bibleImage {
+      max-width: 50%;
+    }
+
+    img {
+      transition: 0.35s;
+    }
+
+    img:hover {
+      transform: scale(1.01);
+    }
+
+    .linkBody {
+      text-align: left;
+    }
+  }
+
+  @media screen and (max-width: 735px) {
+    .gemContent {
+      flex-direction: column-reverse;
+      justify-content: center;
+    }
+
+    .bibleImage {
+      max-width: 75%;
+    }
+
+    .linkBody {
+    text-align: center;
+    }
+  }
+
+  .gemContent {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: auto;
+  }
+
+  .title {
+    margin-bottom: 1rem;
+  }
+
+  .linkBody {
+    margin: 1rem;
+  }
+
+  .tgwLink {
+    margin-top: 1rem;
+    padding: 1rem 1rem;
+    min-width: 75px;
+    font-size: large;
+    font-family: "ヒラギノ丸ゴ ProN";
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+</style>
