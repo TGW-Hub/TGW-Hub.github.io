@@ -24,6 +24,21 @@ export default defineConfig({
           return new URLSearchParams();
         }
       }),
-    ]
-  }
+    ],
+    build: {
+      rollupOptions: {
+        output:  {
+          assetFileNames: (assetFile) => {
+            const randomID = Math.random().toString(16).split(".").pop();
+            const prefix = "tgw-img-" + randomID;
+            const imageFiles = /^.*\.(jpg|jpeg|webp|avif|png|gif)$/
+            if(assetFile.name.match(imageFiles)) {
+              return `_assets/${prefix}[hash][extname]`;
+            }
+            return `_assets/[name]-[hash][extname]`;
+          }
+        }
+      }
+    }
+  },
 });
