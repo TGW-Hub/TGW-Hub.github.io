@@ -1,15 +1,31 @@
+@import "@sass-lib/util-function";
+
+$light-mode-icon: #00b009;
+$dark-mode-icon: #41c448;
+
+$light-mode-intro-box-bg-color: #dfdfdf;
+$dark-mode-intro-box-bg-color: #434343;
+
 [data-icon] {
   display: block;
+  @include adjust-color($light-mode-icon);
+}
+[html-dark-mode] [data-icon] {
+  @include adjust-color($dark-mode-icon);
+}
+
+[html-dark-mode] .introduction-box {
+  background-color: $dark-mode-intro-box-bg-color;
 }
 
 .introduction-box {
+  background-color: $light-mode-intro-box-bg-color;
   align-self: stretch;
   display: flex;
   flex-direction: row;
   width: 80vw;
   min-width: 300px;
   max-width: 550px;
-  background-color: #dfdfdf;
   border-radius: 20px;
   min-height: var(--min-height);
   overflow: hidden;
@@ -25,7 +41,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    z-index: 1;
+    z-index: 10;
 
     .role {
       --margin: 10px;
@@ -46,30 +62,19 @@
     }
 
   }
-  @mixin full-width($position: relative) {
-    width: 100%;
-    height: 100%;
-    position: $position;
-  }
   .img-container {
     width: 40%;
   }
   .img-wrapper {
-    @include full-width();
+    @include full-width-height-relative();
 
     picture {
       display: block;
-      @include full-width();
+      @include full-width-height-relative();
       filter: brightness(.75);
 
       img {
-        @include full-width(absolute);
-        display: block;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        object-fit: cover;
+        @include fill-relative-parentnode();
       }
     }
   }
