@@ -1,14 +1,14 @@
-import KazushiKondoImage from "./images/kazushi-kondo.jpg?hash";
-import TakumiSanoImage from "./images/takumi-sano.jpg?hash";
-import MikiyaSakodaImage from "./images/mikiya-sakoda.jpg?hash";
-import ShunIwashitaImage from "./images/shun-iwashita.jpg?hash";
-import HarukiNebuImage from "./images/haruki-nebu.jpg?hash";
+import KazushiKondoImages from "./images/kazushi-kondo.jpg?member_pfp";
+import TakumiSanoImages from "./images/takumi-sano.jpg?member_pfp";
+import MikiyaSakodaImages from "./images/mikiya-sakoda.jpg?member_pfp";
+import ShunIwashitaImages from "./images/shun-iwashita.jpg?member_pfp";
+import HarukiNebuImages from "./images/haruki-nebu.jpg?member_pfp";
 
-import getIntroduction from "./getIntroduction";
+import { getIntroduction, separateImageFormats } from "./util";
 
 export type RoleType = "マネージャー" | "デベロッパー";
 export interface MemberProps {
-  imageSrc: any,
+  images: any,
   borned: [number, number, number],
   name: string,
   introduction: string,
@@ -20,7 +20,7 @@ export const members: {
   [member: string]: MemberProps
 } = {
   kazushiKondo: {
-    imageSrc: KazushiKondoImage,
+    images: separateImageFormats(KazushiKondoImages),
     borned: [2005, 12, 5],
     name: "近藤和志",
     lineAccountLink: "#",
@@ -28,7 +28,7 @@ export const members: {
     introduction: getIntroduction("kazushi-kondo.txt"),
   },
   takumiSano: {
-    imageSrc: TakumiSanoImage,
+    images: separateImageFormats(TakumiSanoImages),
     borned: [2007, 10, 31],
     name: "佐野拓海",
     lineAccountLink: "#",
@@ -36,7 +36,7 @@ export const members: {
     introduction: getIntroduction("takumi-sano.txt"),
   },
   mikiyaSakoda: {
-    imageSrc: MikiyaSakodaImage,
+    images: separateImageFormats(MikiyaSakodaImages),
     borned: [2006, 9, 6],
     name: "迫田樹也",
     lineAccountLink: "https://line.me/ti/p/ONTZieTwqd",
@@ -44,7 +44,7 @@ export const members: {
     introduction: getIntroduction("mikiya-sakoda.txt")
   },
   shunIwashita: {
-    imageSrc: ShunIwashitaImage,
+    images: separateImageFormats(ShunIwashitaImages),
     borned: [2005, 5, 19],
     name: "岩下俊",
     lineAccountLink: "",
@@ -52,7 +52,7 @@ export const members: {
     introduction: getIntroduction("shun-iwashita.txt")
   },
   harukiNebu: {
-    imageSrc: HarukiNebuImage,
+    images: separateImageFormats(HarukiNebuImages),
     borned: [2006, 12, 19],
     name: "根布晴希",
     lineAccountLink: "",

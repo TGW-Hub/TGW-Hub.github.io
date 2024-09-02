@@ -15,9 +15,13 @@ export default defineConfig({
     plugins: [
       imagetools({
         defaultDirectives: (url) => {
-          return new URLSearchParams({
-            name: `tgw-images-${Date.now()}-[hash]`
-          })
+          if(url.searchParams.has("member_pfp")) {
+            return new URLSearchParams({
+              format: "avif;webp;jpeg",
+              as: "metadata"
+            })
+          }
+          return new URLSearchParams()
         }
       }),
     ]
