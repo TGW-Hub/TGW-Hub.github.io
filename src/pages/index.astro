@@ -4,13 +4,16 @@ import TopPage from '../components/indexPage/TopPage.astro';
 import EventsLinkPage from '../components/indexPage/EventsLinkPage.astro';
 import GuidelinesLinkPage from '../components/indexPage/GuidelinesLinkPage.astro';
 import ManagersLinkPage from '../components/indexPage/ManagersLinkPage.astro';
+import FullScreenPage from '../layouts/FullScreenPage.astro';
 ---
 
-<Layout>
-	<TopPage />
-	<EventsLinkPage />
-	<GuidelinesLinkPage />
-	<ManagersLinkPage />
+<Layout lock>
+	<FullScreenPage pagePadding={"0px"} enableScroll>
+		<TopPage />
+		<EventsLinkPage />
+		<GuidelinesLinkPage />
+		<ManagersLinkPage />
+	</FullScreenPage>
 </Layout>
 
 <style lang="scss">

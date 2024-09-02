@@ -4,9 +4,10 @@ import '@fontsource/rocknroll-one';
 
 interface Props {
 	title?: string;
+	lock?: boolean;
 }
 
-const { title = "TGW Hub" } = Astro.props;
+const { title = "TGW Hub", lock = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,7 +20,7 @@ const { title = "TGW Hub" } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body style={{ overflow: lock ? "hidden" : "scroll" }}>
 		<slot />
 		<script>
 			const body = document.getElementsByTagName("body")[0];
