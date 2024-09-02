@@ -1,11 +1,11 @@
 ---
 import { Icon } from "astro-icon/components";
 import formattedBirthdayString from "./formattedBirthdayString";
-import type { RoleType } from "./managersInfo";
+import type { RoleType, ImageFormats } from "./managersInfo";
 import "./IntroductionBox.scss";
 
 interface Props {
-  src: any,
+  images: ImageFormats,
   introducingWord: string,
   borned: [number, number, number],
   fullname: string,
@@ -13,7 +13,7 @@ interface Props {
   lineAccountLink: string,
 }
 
-const { src, introducingWord, borned, fullname, roles, lineAccountLink } = Astro.props;
+const { images, introducingWord, borned, fullname, roles, lineAccountLink } = Astro.props;
 const formattedBirthday = formattedBirthdayString(borned);
 // https://cssgradient.io
 const roleColor: { [key in typeof roles[number]]: string } = {
@@ -21,6 +21,7 @@ const roleColor: { [key in typeof roles[number]]: string } = {
   "デベロッパー": "#8e26e5"
 }
 const sortedRoles = roles.sort();
+const { avif, webp, jpeg } = images;
 ---
 
 <div class="introduction-box">
@@ -35,7 +36,12 @@ const sortedRoles = roles.sort();
   </div>
   <span class="img-container">
     <figure class="img-wrapper">
-      <img src={src} alt="image">
+      <picture>
+        <source srcset={avif.src} type="image/avif">
+        <source srcset={webp.src} type="image/webp">
+        { /** Fallback image **/ }
+        <img src={jpeg.src} alt="image">
+      </picture>
     </figure>
   </span>
   <div class="content-wrapper">

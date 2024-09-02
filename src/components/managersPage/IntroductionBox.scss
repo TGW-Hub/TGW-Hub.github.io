@@ -11,7 +11,7 @@
   max-width: 550px;
   background-color: #dfdfdf;
   border-radius: 20px;
-  min-height: 300px;
+  min-height: var(--min-height);
   overflow: hidden;
   margin: 30px;
   position: relative;
@@ -46,26 +46,31 @@
     }
 
   }
-
+  @mixin full-width($position: relative) {
+    width: 100%;
+    height: 100%;
+    position: $position;
+  }
   .img-container {
     width: 40%;
   }
   .img-wrapper {
-    width: 100%;
-    height: 100%;
-    position: relative;
+    @include full-width();
 
-    img {
-      position: absolute;
+    picture {
       display: block;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(.8);
+      @include full-width();
+      filter: brightness(.75);
+
+      img {
+        @include full-width(absolute);
+        display: block;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        object-fit: cover;
+      }
     }
   }
 

@@ -1,52 +1,68 @@
-import KazushiImage from "./images/kazushi.jpg";
-import TakumiImage from "./images/takumi.jpg";
-import MikiyaImage from "./images/mikiya.jpg";
-import ShunImage from "./images/shun.jpg";
+import KazushiKondoImages from "./images/kazushi-kondo.jpg?member_pfp";
+import TakumiSanoImages from "./images/takumi-sano.jpg?member_pfp";
+import MikiyaSakodaImages from "./images/mikiya-sakoda.jpg?member_pfp";
+import ShunIwashitaImages from "./images/shun-iwashita.jpg?member_pfp";
+import HarukiNebuImages from "./images/haruki-nebu.jpg?member_pfp";
 
-import getIntroduction from "./getIntroduction";
+import { getIntroduction, separateImageFormats } from "./util";
 
 export type RoleType = "マネージャー" | "デベロッパー";
+export type ImageFormats = { 
+ [key in keyof ReturnType<typeof separateImageFormats>]: {
+  [key: string]: any;
+ }
+}
+
+export interface MemberProps {
+  images: ImageFormats,
+  borned: [number, number, number],
+  name: string,
+  introduction: string,
+  roles: Array<RoleType>,
+  lineAccountLink: string,
+}
 
 export const members: {
-  [member: string]: {
-    imageSrc: any,
-    borned: [number, number, number],
-    name: string,
-    introduction: string,
-    roles: Array<RoleType>,
-    lineAccountLink: string,
-  }
+  [member: string]: MemberProps
 } = {
-  kazushi: {
-    imageSrc: KazushiImage.src,
+  kazushiKondo: {
+    images: separateImageFormats(KazushiKondoImages),
     borned: [2005, 12, 5],
     name: "近藤和志",
     lineAccountLink: "#",
     roles: ["マネージャー", "デベロッパー"],
-    introduction: getIntroduction("kazushi.txt"),
+    introduction: getIntroduction("kazushi-kondo.txt"),
   },
-  takumi: {
-    imageSrc: TakumiImage.src,
+  takumiSano: {
+    images: separateImageFormats(TakumiSanoImages),
     borned: [2007, 10, 31],
     name: "佐野拓海",
     lineAccountLink: "#",
-    roles: ["デベロッパー"],
-    introduction: getIntroduction("takumi.txt"),
+    roles: ["マネージャー"],
+    introduction: getIntroduction("takumi-sano.txt"),
   },
-  mikiya: {
-    imageSrc: MikiyaImage.src,
+  mikiyaSakoda: {
+    images: separateImageFormats(MikiyaSakodaImages),
     borned: [2006, 9, 6],
     name: "迫田樹也",
     lineAccountLink: "https://line.me/ti/p/ONTZieTwqd",
     roles: ["マネージャー", "デベロッパー"],
-    introduction: getIntroduction("mikiya.txt")
+    introduction: getIntroduction("mikiya-sakoda.txt")
   },
-  shun: {
-    imageSrc: ShunImage.src,
+  shunIwashita: {
+    images: separateImageFormats(ShunIwashitaImages),
     borned: [2005, 5, 19],
     name: "岩下俊",
     lineAccountLink: "",
     roles: ["デベロッパー"],
-    introduction: getIntroduction("shun.txt")
+    introduction: getIntroduction("shun-iwashita.txt")
+  },
+  harukiNebu: {
+    images: separateImageFormats(HarukiNebuImages),
+    borned: [2006, 12, 19],
+    name: "根布晴希",
+    lineAccountLink: "",
+    roles: ["マネージャー"],
+    introduction: getIntroduction("haruki-nebu.txt")
   }
 };
