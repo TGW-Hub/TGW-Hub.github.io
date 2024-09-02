@@ -19,9 +19,9 @@ export default defineConfig({
             return new URLSearchParams({
               format: "avif;webp;jpeg",
               as: "metadata"
-            })
+            });
           }
-          return new URLSearchParams()
+          return new URLSearchParams();
         }
       }),
     ]

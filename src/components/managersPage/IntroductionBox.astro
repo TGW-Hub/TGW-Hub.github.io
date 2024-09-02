@@ -1,11 +1,11 @@
 ---
 import { Icon } from "astro-icon/components";
 import formattedBirthdayString from "./formattedBirthdayString";
-import type { RoleType } from "./managersInfo";
+import type { RoleType, ImageFormats } from "./managersInfo";
 import "./IntroductionBox.scss";
 
 interface Props {
-  images: { [key in "avif" | "webp" | "jpeg"]: any },
+  images: ImageFormats,
   introducingWord: string,
   borned: [number, number, number],
   fullname: string,

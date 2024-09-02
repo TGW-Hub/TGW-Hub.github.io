@@ -7,8 +7,14 @@ import HarukiNebuImages from "./images/haruki-nebu.jpg?member_pfp";
 import { getIntroduction, separateImageFormats } from "./util";
 
 export type RoleType = "マネージャー" | "デベロッパー";
+export type ImageFormats = { 
+ [key in keyof ReturnType<typeof separateImageFormats>]: {
+  [key: string]: any;
+ }
+}
+
 export interface MemberProps {
-  images: any,
+  images: ImageFormats,
   borned: [number, number, number],
   name: string,
   introduction: string,
