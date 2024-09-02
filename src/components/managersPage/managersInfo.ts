@@ -4,13 +4,16 @@ import MikiyaSakodaImages from "./images/mikiya-sakoda.jpg?member_pfp";
 import ShunIwashitaImages from "./images/shun-iwashita.jpg?member_pfp";
 import HarukiNebuImages from "./images/haruki-nebu.jpg?member_pfp";
 
-import { getIntroduction, separateImageFormats } from "./util";
+import { getIntroduction, separateImageFormats } from "@util-lib/util";
 
 export type RoleType = "マネージャー" | "デベロッパー";
 export type ImageFormats = { 
- [key in keyof ReturnType<typeof separateImageFormats>]: {
+ [key in keyof ReturnType<typeof formats>]: {
   [key: string]: any;
  }
+}
+const formats = (images: any) => {
+  return separateImageFormats(images, ["avif", "webp", "jpeg"]);
 }
 
 export interface MemberProps {
@@ -26,7 +29,7 @@ export const members: {
   [member: string]: MemberProps
 } = {
   kazushiKondo: {
-    images: separateImageFormats(KazushiKondoImages),
+    images: formats(KazushiKondoImages),
     borned: [2005, 12, 5],
     name: "近藤和志",
     lineAccountLink: "#",
@@ -34,7 +37,7 @@ export const members: {
     introduction: getIntroduction("kazushi-kondo.txt"),
   },
   takumiSano: {
-    images: separateImageFormats(TakumiSanoImages),
+    images: formats(TakumiSanoImages),
     borned: [2007, 10, 31],
     name: "佐野拓海",
     lineAccountLink: "#",
@@ -42,7 +45,7 @@ export const members: {
     introduction: getIntroduction("takumi-sano.txt"),
   },
   mikiyaSakoda: {
-    images: separateImageFormats(MikiyaSakodaImages),
+    images: formats(MikiyaSakodaImages),
     borned: [2006, 9, 6],
     name: "迫田樹也",
     lineAccountLink: "https://line.me/ti/p/ONTZieTwqd",
@@ -50,7 +53,7 @@ export const members: {
     introduction: getIntroduction("mikiya-sakoda.txt")
   },
   shunIwashita: {
-    images: separateImageFormats(ShunIwashitaImages),
+    images: formats(ShunIwashitaImages),
     borned: [2005, 5, 19],
     name: "岩下俊",
     lineAccountLink: "",
@@ -58,7 +61,7 @@ export const members: {
     introduction: getIntroduction("shun-iwashita.txt")
   },
   harukiNebu: {
-    images: separateImageFormats(HarukiNebuImages),
+    images: formats(HarukiNebuImages),
     borned: [2006, 12, 19],
     name: "根布晴希",
     lineAccountLink: "",

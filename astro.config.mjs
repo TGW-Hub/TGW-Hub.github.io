@@ -27,7 +27,8 @@ export default defineConfig({
     ],
     resolve: {
       alias: {
-        '@sass-lib': '/src/lib/sass'
+        '@sass-lib': '/src/lib/sass',
+        '@util-lib': '/src/lib/module'
       },
     },
     build: {

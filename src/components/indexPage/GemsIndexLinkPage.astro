@@ -1,5 +1,9 @@
 ---
 import FullScreenPage from "../../layouts/FullScreenPage.astro";
+import BibleImages from "../../images/openBible.webp?format=avif;webp;jpeg&as=metadata";
+import { separateImageFormats } from "@util-lib/util";
+
+const { avif, webp, jpeg } = separateImageFormats(BibleImages, ["avif", "webp", "jpeg"]);
 ---
 
 <FullScreenPage>
@@ -15,13 +19,23 @@ import FullScreenPage from "../../layouts/FullScreenPage.astro";
         >Check Now</a
       >
     </span>
-    <img class="bibleImage" src="src/images/openBible.webp" />
+    <!-- <img class="bibleImage" src={jpeg.src} /> -->
+    <picture class="bibleImage">
+      <source srcset={avif.src} type="image/avif">
+      <source srcset={webp.src} type="images/webp">
+      <img src={jpeg.src} />
+    </picture>
   </div>
 </FullScreenPage>
 
 <style lang="scss">
   :root {
     font-family: "ヒラギノ丸ゴ ProN";
+  }
+
+  .bibleImage img {
+    width: 100%;
+    object-fit: cover;
   }
 
   @media (prefers-color-scheme: dark) {
