@@ -1,12 +1,14 @@
 ---
 import '@fontsource/pacifico';
 import '@fontsource/rocknroll-one';
+import '@sass-lib/global.scss';
 
 interface Props {
 	title?: string;
+	lock?: boolean;
 }
 
-const { title = "TGW Hub" } = Astro.props;
+const { title = "TGW Hub", lock = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,66 +21,15 @@ const { title = "TGW Hub" } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body style={{ overflow: lock ? "hidden" : "scroll" }}>
 		<slot />
 		<script>
 			const body = document.getElementsByTagName("body")[0];
 			const root = document.documentElement;
 			if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-				// User prefers dark mode
-				body.className = "dark-mode";
-				root.style.setProperty('--html-bg-color', '#1d1d1d')
-			} else {
-    		// User prefers light mode
-				body.className = "light-mode";
-				root.style.setProperty('--html-bg-color', '#f9f9f9');
-			}
+				/* User prefers dark mode */
+				root.setAttribute("html-dark-mode", "")
+			} else { /* User prefers light mode (default)	*/ }
 		</script>
 	</body>
 </html>
-<style is:global lang="scss">
-	:root {
-		--header-large: 40px;
-		--header-medium: 30px;
-		--header-small: 22px;
-	}
-	* {
-		padding: 0;
-		margin: 0;
-		border: none;
-		box-sizing: border-box;
-		outline: none;
-		font-family: Arial, Helvetica, sans-serif;
-	}
-	p {
-		font-size: 18px;
-		font-weight: 500;
-	}
-	a {
-		text-decoration: none;
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: var(--html-bg-color);
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-	.pacifico-cursive {
-		font-family: 'Pacifico', cursive;
-	}
-	.japanese-custom-font {
-		font-family: 'RocknRoll One', sans-serif;
-	}
-	.page-header {
-		text-transform: uppercase;
-	}
-</style>

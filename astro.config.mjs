@@ -25,6 +25,11 @@ export default defineConfig({
         }
       }),
     ],
+    resolve: {
+      alias: {
+        '@sass-lib': '/src/lib/sass'
+      },
+    },
     build: {
       rollupOptions: {
         output:  {

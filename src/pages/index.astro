@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import FullScreenPage from '../layouts/FullScreenPage.astro';
 import TopPage from '../components/indexPage/TopPage.astro';
 import EventsLinkPage from '../components/indexPage/EventsLinkPage.astro';
 import GuidelinesLinkPage from '../components/indexPage/GuidelinesLinkPage.astro';
@@ -7,12 +8,14 @@ import ManagersLinkPage from '../components/indexPage/ManagersLinkPage.astro';
 import GemsIndexLinkPage from '../components/indexPage/GemsIndexLinkPage.astro';
 ---
 
-<Layout>
-	<TopPage />
-	<EventsLinkPage />
-	<GuidelinesLinkPage />
-	<GemsIndexLinkPage />
-	<ManagersLinkPage />
+<Layout lock>
+	<FullScreenPage pagePadding={"0px"} enableScroll>
+		<TopPage />
+		<EventsLinkPage />
+		<GuidelinesLinkPage />
+		<GemsIndexLinkPage />
+		<ManagersLinkPage />
+	</FullScreenPage>
 </Layout>
 
 <style lang="scss">
