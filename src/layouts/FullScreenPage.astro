@@ -2,14 +2,16 @@
 interface Props {
   backgroundColor?: string,
   pagePadding?: string,
+  enableScroll?: boolean
 }
-const { pagePadding = "20px", backgroundColor } = Astro.props;
+const { pagePadding = "20px", backgroundColor, enableScroll = false } = Astro.props;
+const scrollCSS = enableScroll ? `overflow-y: scroll;` : "";
 ---
 
 <section class="fullscreen" style={`--bg-color: ${backgroundColor};`}>
   <div 
     class="container" 
-    style={`padding: ${pagePadding};`}
+    style={`padding: ${pagePadding}; ${scrollCSS}`}
   >
     <slot/>
   </div>
