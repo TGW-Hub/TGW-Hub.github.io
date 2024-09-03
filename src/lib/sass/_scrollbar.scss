@@ -1,0 +1,29 @@
+
+@mixin custom-scrollbar($scrollbarMargin: 10px, $scrollbarWidth: 10px) {
+  &::-webkit-scrollbar {
+    width: $scrollbarWidth;
+  }
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius:10px;
+    &:hover {
+      background: #555; 
+    }
+  }
+
+  &::-webkit-scrollbar-track-piece:end {
+    margin-bottom: $scrollbarMargin; 
+  }
+  &::-webkit-scrollbar-track-piece:start {
+    margin-top: $scrollbarMargin;
+  }
+  &::-webkit-scrollbar-corner {
+    display: none;
+  }
+}

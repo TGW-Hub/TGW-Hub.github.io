@@ -1,34 +1,111 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import FullScreenPage from "../layouts/FullScreenPage.astro";
+import PageDescription from "../components/PageDescription.astro";
+import Button from "../components/Button.astro";
 import IntroductionBox from "../components/managersPage/IntroductionBox.astro";
 import { members } from "../components/managersPage/managersInfo";
 ---
 
-<Layout>
-<FullScreenPage>
-    <div class="box-container">
-    {
-        Object.entries(members).map( ([i, { images, name, borned, introduction, lineAccountLink, roles }]) => (
-            <IntroductionBox 
-                images={images}
-                introducingWord={introduction}
-                fullname={name}
-                borned={borned}
-                lineAccountLink={lineAccountLink}
-                roles={roles}
+<Layout lock>
+<FullScreenPage pagePadding="0px">
+    <div class="flex-container">
+        <div class="page-description">
+            <span class="tgw-logo-container">
+                <a href="/TGW-Hub">
+                    <img src="/TGW-Hub/tgw-logo.svg" alt="tgw-icon">
+                </a>
+            </span>
+            <PageDescription 
+                title="managers" 
+                description="マネージャーとデベロッパーからの挨拶と自己紹介です。これからもよろしくお願いします。"
             />
-        ))
-    }
+            <div style="align-self: flex-end;">
+                <Button 
+                    uppercase
+                    buttonText="ホーム"
+                    theme="light"
+                    link="/TGW-Hub"
+                    borderRadius={5}
+                />
+            </div>
+        </div>
+        <div class="box-container">
+            {
+                Object.entries(members).map( ([i, { images, name, borned, introduction, lineAccountLink, roles }]) => (
+                    <IntroductionBox 
+                        images={images}
+                        introducingWord={introduction}
+                        fullname={name}
+                        borned={borned}
+                        lineAccountLink={lineAccountLink}
+                        roles={roles}
+                    />
+                ))
+            }
+        </div>
     </div>
 </FullScreenPage>
 </Layout>
 
 <style lang="scss">
-    .box-container {
+    @import "@sass-lib/util-function";
+    @import "@sass-lib/scrollbar";
+
+    .flex-container {
         display: flex;
-        justify-content: center;
-        align-items: stretch;
-        flex-wrap: wrap;
+        flex-direction: row;
+        max-width: 1200px;
+        margin: auto;
+
+        .page-description {
+            width: 40%;
+            max-width: 400px;
+            padding: 0 30px;
+            @include flex-container-center();
+            flex-direction: column;
+
+            .tgw-logo-container {
+                margin-bottom: 30px;
+            }
+        }
+
+        .box-container {
+            flex: 1;
+            max-height: 100vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            @include custom-scrollbar(30px);
+        }
+    }
+
+    @media screen and (max-width: 930px) {
+        .flex-container {
+            flex-direction: column;
+            overflow-y: scroll;
+            max-height: 100vh;
+            @include custom-scrollbar(30px);
+
+            .page-description {
+                margin: 30px auto 10px;
+                width: 100%;
+                max-width: 700px;
+            }
+
+            .box-container {
+                max-height: none;
+                overflow: visible;
+            }
+        }
+    }
+
+    @media screen and (max-width: 620px) {
+        .tgw-logo-container img {
+            width: 80px;
+        }
     }
 </style>

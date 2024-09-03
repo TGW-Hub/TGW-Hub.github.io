@@ -38,8 +38,11 @@ export default defineConfig({
             const randomID = Math.random().toString(16).split(".").pop();
             const prefix = "tgw-img-" + randomID;
             const imageFiles = /^.*\.(jpg|jpeg|webp|avif|png|gif)$/
+            const fontFiles = /^.*\.(woff|woff2|ttf)$/
             if(assetFile.name.match(imageFiles)) {
-              return `_assets/${prefix}[hash][extname]`;
+              return `_assets/images/${prefix}[hash][extname]`;
+            } else if(assetFile.name.match(fontFiles)) {
+              return `_assets/fonts/[name]-[hash][extname]`;
             }
             return `_assets/[name]-[hash][extname]`;
           }

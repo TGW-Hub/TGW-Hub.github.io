@@ -10,11 +10,11 @@ $dark-mode-intro-box-bg-color: #434343;
   display: block;
   @include adjust-color($light-mode-icon);
 }
-[html-dark-mode] [data-icon] {
+[html-dark-theme] [data-icon] {
   @include adjust-color($dark-mode-icon);
 }
 
-[html-dark-mode] .introduction-box {
+[html-dark-theme] .introduction-box {
   background-color: $dark-mode-intro-box-bg-color;
 }
 
@@ -41,6 +41,7 @@ $dark-mode-intro-box-bg-color: #434343;
     width: 100%;
     display: flex;
     flex-direction: column;
+    background-color: transparent;
     z-index: 10;
 
     .role {
@@ -100,6 +101,10 @@ $dark-mode-intro-box-bg-color: #434343;
     display: flex;
     justify-content: flex-end;
     margin: 10px 10px 0;
+
+    a {
+      z-index: 100;
+    }
   }
 }
 
