@@ -1,5 +1,7 @@
 ---
 import FullScreenPage from "../../layouts/FullScreenPage.astro";
+import { Image } from "astro:assets";
+import openBibleImage from "../../images/openBible.webp";
 ---
 
 <FullScreenPage>
@@ -15,7 +17,7 @@ import FullScreenPage from "../../layouts/FullScreenPage.astro";
         >Check Now</a
       >
     </span>
-    <img class="bibleImage" src="src/images/openBible.webp" />
+    <Image class="bibleImage" src={openBibleImage} alt="開かれた聖書の画像"/>
   </div>
 </FullScreenPage>
 
@@ -76,13 +78,14 @@ import FullScreenPage from "../../layouts/FullScreenPage.astro";
 
     .bibleImage {
       max-width: 50%;
+      height: auto;
     }
 
-    img {
+    .bibleImage {
       transition: 0.35s;
     }
 
-    img:hover {
+    .bibleImage:hover {
       transform: scale(1.01);
     }
 
@@ -99,6 +102,7 @@ import FullScreenPage from "../../layouts/FullScreenPage.astro";
 
     .bibleImage {
       max-width: 75%;
+      height: auto;
     }
 
     .linkBody {
