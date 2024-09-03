@@ -478,6 +478,11 @@
   resolved "https://registry.yarnpkg.com/@fontsource/rocknroll-one/-/rocknroll-one-5.0.15.tgz#e512fa19ac3b81fbab8515ee92d928f6c2546300"
   integrity sha512-SuMaJwO5zdtr5kooPJI875T+MYeC/JXpf7o3ZXMdRnR3MnJEpqC7YtTSAcK8+xzC3mMfLBDwTus2+4SO8O/gFw==
 
+"@fontsource/yuji-syuku@^5.0.14":
+  version "5.0.14"
+  resolved "https://registry.yarnpkg.com/@fontsource/yuji-syuku/-/yuji-syuku-5.0.14.tgz#d167bfd134480d3395a9eea07c1238bc6ae30488"
+  integrity sha512-r9EsB0AFkwc0Q9oEc+Vjh+EallAD4hLJuXZz0ailXyds8CJqTksDlTy3p215FbtJC8WzhyzdsS/UcSzKpuDJVg==
+
 "@iconify-json/hugeicons@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@iconify-json/hugeicons/-/hugeicons-1.1.1.tgz#0796ba4711d8b4287b13f8a428c6999009ecece2"

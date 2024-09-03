@@ -2,6 +2,12 @@
   --header-large: 40px;
   --header-medium: 30px;
   --header-small: 22px;
+  --default-bg-color: #f9f9f9;
+  --default-color: black;
+}
+[html-dark-theme] {
+  --default-bg-color: #151515;
+  --default-color: rgb(222, 222, 222);
 }
 * {
   padding: 0;
@@ -10,6 +16,8 @@
   box-sizing: border-box;
   outline: none;
   font-family: Arial, Helvetica, sans-serif;
+  color: var(--default-color);
+  background-color: transparent;
 }
 p {
   font-size: 18px;
@@ -20,16 +28,7 @@ a {
 }
 html {
   font-family: system-ui, sans-serif;
-  background-color: #f9f9f9;
-  * {
-    color: black;
-  }
-}
-html[html-dark-mode] {
-  background-color: #151515;
-  * {
-    color: rgb(222, 222, 222);
-  }
+  background-color: var(--default-bg-color);
 }
 code {
   font-family:
@@ -48,7 +47,10 @@ code {
 .japanese-custom-font {
   font-family: 'RocknRoll One', sans-serif;
 }
+.japanese-handwriting-font {
+  font-family: 'Yuji Syuku', serif;
+}
 .page-header {
   text-transform: uppercase;
-  font-size: var(--header-large);
+  font-size: var(--header-medium);
 }

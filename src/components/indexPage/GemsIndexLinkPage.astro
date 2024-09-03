@@ -1,7 +1,9 @@
 ---
 import FullScreenPage from "../../layouts/FullScreenPage.astro";
-import { Image } from "astro:assets";
-import openBibleImage from "../../images/openBible.webp";
+import BibleImages from "../../images/openBible.webp?format=avif;webp;jpeg&as=metadata";
+import { separateImageFormats } from "@util-lib/util";
+
+const { avif, webp, jpeg } = separateImageFormats(BibleImages, ["avif", "webp", "jpeg"]);
 ---
 
 <FullScreenPage>
@@ -17,13 +19,23 @@ import openBibleImage from "../../images/openBible.webp";
         >Check Now</a
       >
     </span>
-    <Image class="bibleImage" src={openBibleImage} alt="開かれた聖書の画像"/>
+    <!-- <img class="bibleImage" src={jpeg.src} /> -->
+    <picture class="bibleImage">
+      <source srcset={avif.src} type="image/avif">
+      <source srcset={webp.src} type="images/webp">
+      <img src={jpeg.src} />
+    </picture>
   </div>
 </FullScreenPage>
 
 <style lang="scss">
   :root {
     font-family: "ヒラギノ丸ゴ ProN";
+  }
+
+  .bibleImage img {
+    width: 100%;
+    object-fit: cover;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -78,14 +90,13 @@ import openBibleImage from "../../images/openBible.webp";
 
     .bibleImage {
       max-width: 50%;
-      height: auto;
     }
 
-    .bibleImage {
+    img {
       transition: 0.35s;
     }
 
-    .bibleImage:hover {
+    img:hover {
       transform: scale(1.01);
     }
 
@@ -102,7 +113,6 @@ import openBibleImage from "../../images/openBible.webp";
 
     .bibleImage {
       max-width: 75%;
-      height: auto;
     }
 
     .linkBody {

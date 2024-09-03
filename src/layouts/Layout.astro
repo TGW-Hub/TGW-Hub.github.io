@@ -1,6 +1,7 @@
 ---
 import '@fontsource/pacifico';
 import '@fontsource/rocknroll-one';
+import '@fontsource/yuji-syuku';
 import '@sass-lib/global.scss';
 
 interface Props {
@@ -17,18 +18,17 @@ const { title = "TGW Hub", lock = false } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/TGW-Hub/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body style={{ overflow: lock ? "hidden" : "scroll" }}>
 		<slot />
 		<script>
-			const body = document.getElementsByTagName("body")[0];
 			const root = document.documentElement;
 			if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
 				/* User prefers dark mode */
-				root.setAttribute("html-dark-mode", "")
+				root.setAttribute("html-dark-theme", "");
 			} else { /* User prefers light mode (default)	*/ }
 		</script>
 	</body>
