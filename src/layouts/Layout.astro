@@ -23,6 +23,7 @@ const { title = "TGW Hub", lock = false } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body style={{ overflow: lock ? "hidden" : "scroll" }}>
+		<slot name="nav-bar"/>
 		<slot />
 		<script>
 			const root = document.documentElement;

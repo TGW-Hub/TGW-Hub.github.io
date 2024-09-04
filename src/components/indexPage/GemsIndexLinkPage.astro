@@ -23,7 +23,7 @@ const { avif, webp, jpeg } = separateImageFormats(BibleImages, ["avif", "webp", 
     <picture class="bibleImage">
       <source srcset={avif.src} type="image/avif">
       <source srcset={webp.src} type="images/webp">
-      <img src={jpeg.src} />
+      <img src={jpeg.src} alt="開かれた聖書の画像"/>
     </picture>
   </div>
 </FullScreenPage>
@@ -90,14 +90,15 @@ const { avif, webp, jpeg } = separateImageFormats(BibleImages, ["avif", "webp", 
 
     .bibleImage {
       max-width: 50%;
-    }
+      overflow: hidden;
 
-    img {
-      transition: 0.35s;
-    }
+      img {
+        transition: 0.35s;
 
-    img:hover {
-      transform: scale(1.01);
+        &:hover {
+          transform: scale(1.02);
+        }
+      }
     }
 
     .linkBody {
