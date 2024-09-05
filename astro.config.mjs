@@ -47,7 +47,8 @@ export default defineConfig({
             }
             return `_assets/[name]-[hash][extname]`;
           }
-        }
+        },
+        external: ["src/pages/test.astro"]
       }
     }
   },

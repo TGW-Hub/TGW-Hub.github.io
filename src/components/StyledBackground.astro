@@ -1,0 +1,107 @@
+---
+---
+
+<div class="fill-entire-back">
+  <div id="background"></div>
+</div>
+
+<script>
+  function randomRange(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  const colors = ["red-ish", "green-ish", "blue-ish"] as const;
+  function randomColor(color: typeof colors[number]) {
+    const strong = randomRange(180, 255);
+    const weak = () => randomRange(70, 170);
+    const [weak1, weak2] = [weak(), weak()];
+    switch(color) {
+      case "red-ish":
+        return [strong, weak1, weak2];
+      case "green-ish":
+        return [weak1, strong, weak2];
+      case "blue-ish":
+        return [weak1, weak2, strong];
+      default:
+        const _typeCheck: never = color;
+    }
+  }
+  function generateRandom(parentNode: HTMLElement) {
+    const width = parentNode.offsetWidth;
+    const height = parentNode.offsetHeight;
+    const span = document.createElement("span");
+    span.classList.add("circle");
+    const [randomTop, randomLeft] = [
+      Math.round(Math.random() * width),
+      Math.round(Math.random() * height)
+    ]
+    span.style.top = `${randomTop}px`;
+    span.style.left = `${randomLeft}px`;
+
+    // random size
+    span.style.setProperty("--size", `${randomRange(60, 90)}px`);
+    // random color
+    const randC = Math.floor(Math.random() * colors.length);
+    const [_r, _g, _b] = randomColor(colors[randC]);
+    span.style.setProperty("--bg-color", `rgb(${_r}, ${_g}, ${_b})`);
+    parentNode.appendChild(span);
+
+    // random duration time
+    const t = randomRange(2, 5);
+    span.style.setProperty("--duration-time", `${t}s`);
+    setTimeout(() => {
+      parentNode.removeChild(span);
+    }, (t * 1000))
+  }
+  window.onload = function() {
+    const bgDiv = document.getElementById("background");
+
+    let run = setInterval(intervalFunction, 1000);
+    function intervalFunction() {
+      if(Math.random() * 10 < 4) {
+        const randomNumber = randomRange(3, 7);
+        for(let i=0; i<randomNumber; i++) {
+          generateRandom(bgDiv);
+        }
+      }
+    }
+  }
+</script>
+
+<style lang="scss">
+  @import "@sass-lib/util-function";
+
+  .fill-entire-back {
+    @include fill-relative-parentnode(-99, transparent);
+    overflow: hidden;
+    mask-image: linear-gradient(to top, rgba(0,0,01), transparent);
+    filter: brightness(.8) blur(5px);
+
+    #background {
+      @include full-width-height-relative();
+
+      :global(.circle) {
+        $size: var(--size);
+        background-color: var(--bg-color);
+        position: absolute;
+        z-index: -2;
+        display: block;
+        width: $size;
+        height: $size;
+        border-radius: 50%;
+        translate: -50% -50%;
+        animation: var(--duration-time) fade-in-out forwards;
+      }
+    }
+  }
+  @keyframes fade-in-out {
+    0% {
+      opacity: 0;
+    }
+    40%, 60% {
+      opacity: .7;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+</style>
