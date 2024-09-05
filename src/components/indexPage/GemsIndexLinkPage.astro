@@ -1,20 +1,22 @@
 ---
 import FullScreenPage from "../../layouts/FullScreenPage.astro";
-import BibleImages from "../../images/openBible.webp?format=avif;webp;jpeg&as=metadata";
+import PageDescription from "../PageDescription.astro";
+import BibleImages from "@img/openBible.webp?fb";
 import { separateImageFormats } from "@util-lib/util";
 
 const { avif, webp, jpeg } = separateImageFormats(BibleImages, ["avif", "webp", "jpeg"]);
 ---
 
 <FullScreenPage>
-  <h1 class="page-header">Gems Index</h1>
   <div class="gemContent">
     <span class="linkBody">
-      <h2 class="title">Gems Index</h2>
-      <p>
-        TGWに寄せられた宝の索引<br
-        />グループ開設から現在までのすべてのコメントがここに
-      </p>
+      <PageDescription 
+        title="Gems Index"
+        description={[
+          "TGWに寄せられた宝の索引",
+          "グループ開設から現在までのすべてのコメントがここに"
+        ]}
+      />
       <a class="tgwLink" href="https://kondo-kazushi.github.io/tgw-index"
         >Check Now</a
       >
@@ -23,7 +25,7 @@ const { avif, webp, jpeg } = separateImageFormats(BibleImages, ["avif", "webp", 
     <picture class="bibleImage">
       <source srcset={avif.src} type="image/avif">
       <source srcset={webp.src} type="images/webp">
-      <img src={jpeg.src} />
+      <img src={jpeg.src} alt="開かれた聖書の画像"/>
     </picture>
   </div>
 </FullScreenPage>
@@ -51,33 +53,45 @@ const { avif, webp, jpeg } = separateImageFormats(BibleImages, ["avif", "webp", 
     }
   }
 
+  $tgwLinkButtonStyles: (
+    light: (
+      color: black,
+      background-color: white,
+      border: 2px solid black,
+    ),
+    dark: (
+      color: white,
+      background-color: black,
+      border: 2px solid white,
+    )
+  );
+  @mixin tgwLink($variant) {
+    $styles: map-get($tgwLinkButtonStyles, $variant);
+
+    color: map-get($styles, color);
+    background-color: map-get($styles, background-color);
+    border: map-get($styles, border);
+  }
+
   @media (prefers-color-scheme: dark) {
     .tgwLink {
-      color: black;
-      background-color: white;
-      border: 2px solid black;
+      @include tgwLink(light);
     }
     @media screen and (min-width: 500px) {
       .tgwLink:hover {
-        color: white;
-        background: black;
-        border: 2px solid white;
+        @include tgwLink(dark);
       }
     }
   }
 
   @media (prefers-color-scheme: light) {
     .tgwLink {
-      color: white;
-      background-color: black;
-      border: 2px solid white;
+      @include tgwLink(dark);
     }
 
     @media screen and (min-width: 500px) {
       .tgwLink:hover {
-        color: black;
-        background: white;
-        border: 2px solid black;
+        @include tgwLink(light);
       }
     }
   }
@@ -90,14 +104,15 @@ const { avif, webp, jpeg } = separateImageFormats(BibleImages, ["avif", "webp", 
 
     .bibleImage {
       max-width: 50%;
-    }
+      overflow: hidden;
 
-    img {
-      transition: 0.35s;
-    }
+      img {
+        transition: 0.35s;
 
-    img:hover {
-      transform: scale(1.01);
+        &:hover {
+          transform: scale(1.02);
+        }
+      }
     }
 
     .linkBody {
@@ -112,11 +127,12 @@ const { avif, webp, jpeg } = separateImageFormats(BibleImages, ["avif", "webp", 
     }
 
     .bibleImage {
-      max-width: 75%;
+      width: 75%;
+      max-width: 400px;
     }
 
     .linkBody {
-    text-align: center;
+      text-align: center;
     }
   }
 
