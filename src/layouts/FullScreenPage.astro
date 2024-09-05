@@ -4,7 +4,7 @@ interface Props {
   pagePadding?: string,
   enableScroll?: boolean
 }
-const { pagePadding = "20px", backgroundColor, enableScroll = false } = Astro.props;
+const { pagePadding = "20px", backgroundColor = "transparent", enableScroll = false } = Astro.props;
 const scrollCSS = enableScroll ? `overflow-y: scroll;` : "";
 ---
 
