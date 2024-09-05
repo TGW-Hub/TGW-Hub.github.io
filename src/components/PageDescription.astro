@@ -1,7 +1,7 @@
 ---
 interface Props {
   title: string,
-  description: string,
+  description: string | string[],
 }
 
 const { title, description } = Astro.props;
@@ -11,7 +11,14 @@ const { title, description } = Astro.props;
   <span class="header-box">
     <h2 class="page-header">{title}</h2>
   </span>
-  <p>{description}</p>
+  <p>
+    {
+      typeof description === "string" ? description :
+      description.map(text => (
+        <>{text}<br/></>
+      )) 
+    }
+  </p>
 </div>
 
 <style lang="scss">

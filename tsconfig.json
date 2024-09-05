@@ -4,7 +4,8 @@
     "baseUrl": ".",
     "paths": {
       "@sass-lib/*": ["src/lib/sass/*"],
-      "@util-lib/*": ["src/lib/module/*"]
+      "@util-lib/*": ["src/lib/module/*"],
+      "@img/*": ["src/images/*"],
     }
   }
 }

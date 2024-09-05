@@ -15,7 +15,7 @@ export default defineConfig({
     plugins: [
       imagetools({
         defaultDirectives: (url) => {
-          if(url.searchParams.has("member_pfp")) {
+          if(url.searchParams.has("fb")) {
             return new URLSearchParams({
               format: "avif;webp;jpeg",
               as: "metadata"
@@ -28,7 +28,8 @@ export default defineConfig({
     resolve: {
       alias: {
         '@sass-lib': '/src/lib/sass',
-        '@util-lib': '/src/lib/module'
+        '@util-lib': '/src/lib/module',
+        '@img': '/src/images',
       },
     },
     build: {
