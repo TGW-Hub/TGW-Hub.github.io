@@ -2,9 +2,10 @@
 interface Props {
   backgroundColor?: string,
   pagePadding?: string,
-  enableScroll?: boolean
+  enableScroll?: boolean,
+  pageId?: string,
 }
-const { pagePadding = "20px", backgroundColor = "transparent", enableScroll = false } = Astro.props;
+const { pagePadding = "20px", backgroundColor = "transparent", enableScroll = false, pageId } = Astro.props;
 const scrollCSS = enableScroll ? `overflow-y: scroll;` : "";
 ---
 
@@ -12,6 +13,7 @@ const scrollCSS = enableScroll ? `overflow-y: scroll;` : "";
   <div 
     class="container" 
     style={`padding: ${pagePadding}; ${scrollCSS}`}
+    id={pageId}
   >
     <slot/>
   </div>

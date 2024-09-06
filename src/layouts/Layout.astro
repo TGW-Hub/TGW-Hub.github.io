@@ -23,14 +23,16 @@ const { title = "TGW Hub", lock = false } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body style={{ overflow: lock ? "hidden" : "scroll" }}>
-		<slot name="nav-bar"/>
+		<slot name="navbar"/>
 		<slot />
 		<script>
-			const root = document.documentElement;
-			if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-				/* User prefers dark mode */
-				root.setAttribute("html-dark-theme", "");
-			} else { /* User prefers light mode (default)	*/ }
+			window.onload = () => {
+				const root = document.documentElement;
+				if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					/* User prefers dark mode */
+					root.setAttribute("html-dark-theme", "");
+				} else { /* User prefers light mode (default)	*/ }
+			}
 		</script>
 	</body>
 </html>

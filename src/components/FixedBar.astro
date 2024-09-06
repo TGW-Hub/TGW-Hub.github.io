@@ -1,0 +1,66 @@
+---
+interface Props {
+  hide?: boolean,
+  pageId?: string,
+}
+const { hide = false, pageId } = Astro.props;
+---
+
+<div class={`fixed-bar ${!hide ? "show" : ""}`} data-page-id={pageId}>
+  <div class="logo-container">
+    <img src="/TGW-Hub/tgw-logo.svg" alt="tgw logo">
+  </div>
+  <div class="toggle-btn-container">
+    <!-- TODO: add toggle button -->
+  </div>
+</div>
+
+<script>
+  const fixedBar = document.getElementsByClassName("fixed-bar")[0];
+  const id = fixedBar.getAttribute("data-page-id");
+  const page = document.getElementById(id) || document.documentElement;
+  let lastScrollTop: number = page.scrollTop;
+  page.addEventListener("scroll", function() {
+    const currentScrollTop = page.scrollTop;
+    // scroll up
+    if(currentScrollTop < lastScrollTop) {
+      fixedBar.classList.add("show");
+    }
+    // scroll down
+    else {
+      fixedBar.classList.remove("show");
+    }
+
+    lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+  })
+</script>
+
+<style lang="scss">
+  [html-dark-theme] .fixed-bar {
+    background-color: white;
+  }
+  .fixed-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+    background-color: rgba(0,0,0,.7);
+    transition: .3s;
+
+    &.show {
+      transform: translateY(0);
+    }
+
+    .logo-container {
+      padding: 20px;
+      img {
+        display: block;
+        width: 30px;
+      }
+    }
+  }
+</style>

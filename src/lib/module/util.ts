@@ -1,5 +1,6 @@
 import * as path from "node:path";
 import { readFileSync } from "node:fs";
+import { randomBytes } from "node:crypto";
 
 const __document_dirname = "./src/components/managersPage/docs";
 
@@ -25,4 +26,8 @@ export function separateImageFormats<T extends { format: P }, P extends string>(
   })
 
   return obj;
+}
+
+export function generateRandomID(bytes: number) {
+  return randomBytes(bytes).toString("hex");
 }

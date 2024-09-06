@@ -1,22 +1,30 @@
 ---
 import FullScreenPage from '../../layouts/FullScreenPage.astro';
 import PageDescription from '../PageDescription.astro';
+import Button from '../Button.astro';
 import StyledBackground from '../StyledBackground.astro';
 
 import ManagerSVG from '@img/undraw-manager.svg';
 ---
 
 <FullScreenPage pagePadding="0px">
-  <StyledBackground />
+  <StyledBackground/>
   <div class="flex-container">
     <div class="page-description">
       <PageDescription 
         title="managers"
         description={[
           "hello world",
+          // TODO: change to proper text
         ]}
       />
       <!-- TODO: add button link to managers page -->
+       <div class="button-container">
+        <Button
+          buttonText='メンバーを見る'
+          link='/TGW-Hub/managers'
+        />
+       </div>
     </div>
     <div class="icon-wrapper">
       <img src={ManagerSVG.src} alt="manager icon">

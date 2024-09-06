@@ -10,7 +10,8 @@
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   const colors = ["red-ish", "green-ish", "blue-ish"] as const;
-  function randomColor(color: typeof colors[number]) {
+  function randomColor() {
+    const color = colors[Math.floor(Math.random() * colors.length)];
     const strong = randomRange(180, 255);
     const weak = () => randomRange(70, 170);
     const [weak1, weak2] = [weak(), weak()];
@@ -30,41 +31,64 @@
     const height = parentNode.offsetHeight;
     const span = document.createElement("span");
     span.classList.add("circle");
+
+    // random position
     const [randomTop, randomLeft] = [
-      Math.round(Math.random() * width),
-      Math.round(Math.random() * height)
+      Math.round(Math.random() * height),
+      Math.round(Math.random() * width)
     ]
     span.style.top = `${randomTop}px`;
     span.style.left = `${randomLeft}px`;
 
     // random size
-    span.style.setProperty("--size", `${randomRange(60, 90)}px`);
+    span.style.setProperty("--size", `${randomRange(60, 120)}px`);
     // random color
-    const randC = Math.floor(Math.random() * colors.length);
-    const [_r, _g, _b] = randomColor(colors[randC]);
+    const [_r, _g, _b] = randomColor();
     span.style.setProperty("--bg-color", `rgb(${_r}, ${_g}, ${_b})`);
     parentNode.appendChild(span);
 
     // random duration time
-    const t = randomRange(2, 5);
+    const t = randomRange(2, 5); // second
     span.style.setProperty("--duration-time", `${t}s`);
+
+    // random animation delay
+    const delay = randomRange(0, 2000);
+    span.style.setProperty("--delay", `${delay}ms`);
+
+    // remove element
     setTimeout(() => {
       parentNode.removeChild(span);
-    }, (t * 1000))
+    }, (t * 1000) + delay + 100);
   }
-  window.onload = function() {
-    const bgDiv = document.getElementById("background");
 
-    let run = setInterval(intervalFunction, 1000);
-    function intervalFunction() {
+  const bgDiv = document.getElementById("background");
+
+  let intervalId;
+  function run() {
+    intervalId = setInterval(() => {
       if(Math.random() * 10 < 4) {
         const randomNumber = randomRange(3, 7);
         for(let i=0; i<randomNumber; i++) {
           generateRandom(bgDiv);
         }
       }
-    }
+    }, 1500);
   }
+  function stop() {
+    clearInterval(intervalId);
+  }
+  // Listen for visibility changes
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      // Tab is inactive, stop the interval
+      stop();
+    } else {
+      // Tab is active, start the interval
+      run();
+    }
+  });
+  // Start the interval initially
+  run();
 </script>
 
 <style lang="scss">
@@ -80,16 +104,18 @@
       @include full-width-height-relative();
 
       :global(.circle) {
+        display: block;
+        opacity: 0;
         $size: var(--size);
         background-color: var(--bg-color);
         position: absolute;
         z-index: -2;
-        display: block;
         width: $size;
         height: $size;
         border-radius: 50%;
         translate: -50% -50%;
         animation: var(--duration-time) fade-in-out forwards;
+        animation-delay: var(--delay);
       }
     }
   }
