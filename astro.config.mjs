@@ -4,7 +4,7 @@ import { imagetools } from "vite-imagetools";
 
 // https://astro.build/config
 export default defineConfig({
-  base: "/TGW-Hub",
+  base: "/",
   server: {
     host: true
   },
