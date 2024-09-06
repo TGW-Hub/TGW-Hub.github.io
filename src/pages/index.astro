@@ -6,10 +6,15 @@ import EventsLinkPage from '../components/indexPage/EventsLinkPage.astro';
 import GuidelinesLinkPage from '../components/indexPage/GuidelinesLinkPage.astro';
 import ManagersLinkPage from '../components/indexPage/ManagersLinkPage.astro';
 import GemsIndexLinkPage from '../components/indexPage/GemsIndexLinkPage.astro';
+import FixedBar from '../components/FixedBar.astro';
+import { generateRandomID } from '@util-lib/util';
+
+const randomId = generateRandomID(8); // 8 bytes
 ---
 
-<Layout lock>
-	<FullScreenPage pagePadding={"0px"} enableScroll>
+<Layout lock client:load>
+	<FixedBar pageId={randomId} slot='navbar' client:load/>
+	<FullScreenPage pageId={randomId} pagePadding={"0px"} enableScroll>
 		<TopPage />
 		<EventsLinkPage />
 		<GuidelinesLinkPage />

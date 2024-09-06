@@ -32,6 +32,7 @@ import Button from '../Button.astro';
   .background {
     width: 100vw;
     height: 100vh;
+    @include flex-container-center();
 
     &::before {
       content: "";
@@ -47,7 +48,7 @@ import Button from '../Button.astro';
     padding: 4rem 0;
     width: 80vw;
     max-width: 850px;
-    margin: auto;
+    margin: -10% auto 0;
     text-align: center;
     color: white;
     position: relative;
