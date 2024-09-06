@@ -12,7 +12,23 @@ import FullScreenPage from '../../layouts/FullScreenPage.astro';
 
 <script>
   const videoPlayer = document.getElementById("video-player") as HTMLVideoElement;
+  const mediaSource = new MediaSource();
+  videoPlayer.src = URL.createObjectURL(mediaSource);
+
+  mediaSource.addEventListener("sourceopen", sourceOpen, false);
   const numberOfVideos = 6;
+  async function sourceOpen() {
+    URL.revokeObjectURL(videoPlayer.src);
+    const sourceBuffer = mediaSource.addSourceBuffer('video/mp4; codecs="avc1.42E01E, mp4a.40.2"');
+
+    const videos = [];
+    for(let i=1; i<numberOfVideos; i++) {
+      const video = await fetch(`/TGW-Hub/video/video${i}.mp4`);
+      videos.push(video);
+    }
+    Promise.all(videos).then(v => {
+    })
+  }
 
   type SOURCE_TYPE = { src: string, type: string }
   const sources: Array<SOURCE_TYPE> = [];
