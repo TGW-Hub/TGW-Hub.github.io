@@ -12,7 +12,7 @@ import { generateRandomID } from '@util-lib/util';
 const randomId = generateRandomID(8); // 8 bytes
 ---
 
-<Layout lock client:load>
+<Layout lock>
 	<FixedBar pageId={randomId} slot='navbar' client:load/>
 	<FullScreenPage pageId={randomId} pagePadding={"0px"} enableScroll>
 		<TopPage />

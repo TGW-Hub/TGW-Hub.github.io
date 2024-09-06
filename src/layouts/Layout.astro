@@ -26,27 +26,13 @@ const { title = "TGW Hub", lock = false } = Astro.props;
 		<slot name="navbar"/>
 		<slot />
 		<script>
-			const root = document.documentElement;
-			if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-				/* User prefers dark mode */
-				root.setAttribute("html-dark-theme", "");
-			} else { /* User prefers light mode (default)	*/ }
-
-			// const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-			// window.addEventListener("wheel", function(e) {
-			// 	// e.preventDefault();
-			// 	const delta = e.deltaY;
-			// 	const currentScroll = window.scrollY;
-			// 	if(currentScroll <= 0 && delta < 0) {
-			// 		e.preventDefault();
-			// 		window.scrollTo({
-			// 			top: 10,
-			// 			behavior: "instant"
-			// 		});
-			// 	} else if(currentScroll > maxScroll) {
-			// 		window.scrollTo(0, maxScroll);
-			// 	}
-			// }, { passive: false })
+			window.onload = () => {
+				const root = document.documentElement;
+				if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					/* User prefers dark mode */
+					root.setAttribute("html-dark-theme", "");
+				} else { /* User prefers light mode (default)	*/ }
+			}
 		</script>
 	</body>
 </html>
