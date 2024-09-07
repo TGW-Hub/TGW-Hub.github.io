@@ -1,6 +1,9 @@
 import * as path from "node:path";
 import { readFileSync } from "node:fs";
 import { randomBytes } from "node:crypto";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const __document_dirname = "./src/components/managersPage/docs";
 
@@ -30,4 +33,9 @@ export function separateImageFormats<T extends { format: P }, P extends string>(
 
 export function generateRandomID(bytes: number) {
   return randomBytes(bytes).toString("hex");
+}
+
+export function resolveRoot(publicFile: string) {
+  const filePath = path.resolve(process.env.ROOT_NAME, publicFile);
+  return filePath;
 }

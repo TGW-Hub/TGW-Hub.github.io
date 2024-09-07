@@ -1,9 +1,12 @@
 ---
 import FullScreenPage from '../../layouts/FullScreenPage.astro';
+import { resolveRoot } from '@util-lib/util';
+
+const VIDEO_LOCATION = resolveRoot("video");
 ---
 
 <FullScreenPage pagePadding="0">
-  <video id="video-player" webkit-playsinline autoplay muted>
+  <video id="video-player" webkit-playsinline autoplay muted data-root-src={VIDEO_LOCATION}>
     <source src="/TGW-Hub/video/video2.mp4" type="video/mp4">
     お使いのブラウザはvideoタグに対応していません。
   </video>
@@ -12,6 +15,7 @@ import FullScreenPage from '../../layouts/FullScreenPage.astro';
 
 <script>
   const videoPlayer = document.getElementById("video-player") as HTMLVideoElement;
+  const rootPath = videoPlayer.getAttribute("data-root-src");
   const mediaSource = new MediaSource();
   videoPlayer.src = URL.createObjectURL(mediaSource);
 
@@ -23,7 +27,7 @@ import FullScreenPage from '../../layouts/FullScreenPage.astro';
 
     const videos = [];
     for(let i=1; i<numberOfVideos; i++) {
-      const video = await fetch(`/TGW-Hub/video/video${i}.mp4`);
+      const video = await fetch(`${rootPath}/video${i}.mp4`);
       videos.push(video);
     }
     Promise.all(videos).then(v => {
