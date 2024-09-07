@@ -8,6 +8,7 @@ import { members } from "../components/managersPage/managersInfo";
 
 import { resolveRoot } from "@util-lib/util";
 const indexPageLink = resolveRoot();
+const TGW_LOGO = resolveRoot("tgw-logo.svg");
 ---
 
 <Layout lock>
@@ -15,8 +16,8 @@ const indexPageLink = resolveRoot();
     <div class="flex-container">
         <div class="page-description">
             <span class="tgw-logo-container">
-                <a href="/TGW-Hub">
-                    <img src="/TGW-Hub/tgw-logo.svg" alt="tgw-icon">
+                <a href={indexPageLink}>
+                    <img src={TGW_LOGO} alt="tgw-icon">
                 </a>
             </span>
             <PageDescription 
