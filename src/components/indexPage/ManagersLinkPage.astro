@@ -3,8 +3,11 @@ import FullScreenPage from '../../layouts/FullScreenPage.astro';
 import PageDescription from '../PageDescription.astro';
 import Button from '../Button.astro';
 import StyledBackground from '../StyledBackground.astro';
+import { resolveRoot } from '@util-lib/util';
 
 import ManagerSVG from '@img/undraw-manager.svg';
+
+const linkToManagers = resolveRoot("managers");
 ---
 
 <FullScreenPage pagePadding="0px">
@@ -18,11 +21,11 @@ import ManagerSVG from '@img/undraw-manager.svg';
           // TODO: change to proper text
         ]}
       />
-      <!-- TODO: add button link to managers page -->
+      <!-- TODO: add style to button -->
        <div class="button-container">
         <Button
           buttonText='メンバーを見る'
-          link='/TGW-Hub/managers'
+          link={linkToManagers}
         />
        </div>
     </div>
