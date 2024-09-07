@@ -36,9 +36,12 @@ jobs:
           node-version: 20
           cache: 'npm'
       - name: Install dependencies
-        run: npm install
-      - name: Build
-        run: npm run build
+        run: yarn install
+      - name: Build for forked repo
+        run: yarn run setenv --baseUrl ${{ github.event.repository.name }} && yarn run build
+      - name: Build for upstream repo
+        if: github.repository == 'TGW-Hub/TGW-Hub.github.io'
+        run: yarn run build
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact

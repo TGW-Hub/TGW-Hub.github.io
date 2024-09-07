@@ -31,3 +31,8 @@ export function separateImageFormats<T extends { format: P }, P extends string>(
 export function generateRandomID(bytes: number) {
   return randomBytes(bytes).toString("hex");
 }
+
+export function resolveRoot(publicFile: string = "") {
+  const filePath = path.resolve(process.env.ROOT_NAME, publicFile);
+  return filePath;
+}

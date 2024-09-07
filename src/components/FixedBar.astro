@@ -1,14 +1,18 @@
 ---
+import { resolveRoot } from '@util-lib/util';
+
 interface Props {
   hide?: boolean,
   pageId?: string,
 }
 const { hide = false, pageId } = Astro.props;
+const TGW_LOGO_PATH = resolveRoot("tgw-logo.svg");
+console.log(TGW_LOGO_PATH);
 ---
 
 <div class={`fixed-bar ${!hide ? "show" : ""}`} data-page-id={pageId}>
   <div class="logo-container">
-    <img src="/TGW-Hub/tgw-logo.svg" alt="tgw logo">
+    <img src={TGW_LOGO_PATH} alt="tgw logo">
   </div>
   <div class="toggle-btn-container">
     <!-- TODO: add toggle button -->

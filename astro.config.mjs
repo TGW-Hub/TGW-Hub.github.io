@@ -1,10 +1,13 @@
 import { defineConfig } from 'astro/config';
 import icon from "astro-icon";
 import { imagetools } from "vite-imagetools";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // https://astro.build/config
 export default defineConfig({
-  base: "/",
+  base: process.env.ROOT_NAME || '/',
   server: {
     host: true
   },

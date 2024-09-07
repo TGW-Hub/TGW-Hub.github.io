@@ -4,6 +4,9 @@ import '@fontsource/rocknroll-one';
 import '@fontsource/yuji-syuku';
 import '@sass-lib/global.scss';
 
+import { resolveRoot } from '@util-lib/util';
+const FAVICON_PATH = resolveRoot("favicon.svg");
+
 interface Props {
 	title?: string;
 	lock?: boolean;
@@ -18,7 +21,7 @@ const { title = "TGW Hub", lock = false } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/TGW-Hub/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href={FAVICON_PATH} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
