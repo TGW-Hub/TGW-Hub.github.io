@@ -38,7 +38,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Build for forked repo
-        run: npm run build --baseUrl ${{ github.event.repository.name }}
+        run: npm run setenv --baseUrl ${{ github.event.repository.name }} && npm run build
       - name: Build for upstream repo
         if: github.repository == 'TGW-Hub/TGW-Hub.github.io'
         run: npm run build

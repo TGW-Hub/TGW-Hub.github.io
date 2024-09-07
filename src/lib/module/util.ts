@@ -1,9 +1,6 @@
 import * as path from "node:path";
 import { readFileSync } from "node:fs";
 import { randomBytes } from "node:crypto";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const __document_dirname = "./src/components/managersPage/docs";
 

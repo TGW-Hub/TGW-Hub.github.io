@@ -1,24 +1,13 @@
 import { defineConfig } from 'astro/config';
 import icon from "astro-icon";
 import { imagetools } from "vite-imagetools";
+import dotenv from "dotenv";
 
-import { writeFileSync } from "node:fs";
-
-const baseUrl = process.argv.includes('--baseUrl') ?
-  process.argv[process.argv.indexOf('--baseUrl') + 1] :
-  '';
-const rootName = baseUrl.replaceAll("/", "");
-const root = `/${rootName}`;
-
-writeFileSync('.env', `ROOT_NAME=${root}`, 
-  { 
-    encoding: 'utf-8',
-    flag: 'w'
-  });
+dotenv.config();
 
 // https://astro.build/config
 export default defineConfig({
-  base: root,
+  base: process.env.ROOT_NAME || '/',
   server: {
     host: true
   },

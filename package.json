@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "setenv": "node set-env.js",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
