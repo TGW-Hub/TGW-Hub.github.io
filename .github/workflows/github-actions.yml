@@ -41,7 +41,7 @@ jobs:
         run: yarn run setenv --baseUrl ${{ github.event.repository.name }} && yarn run build
       - name: Build for upstream repo
         if: github.repository == 'TGW-Hub/TGW-Hub.github.io'
-        run: yarn run build
+        run: yarn run setenv && yarn run build
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
