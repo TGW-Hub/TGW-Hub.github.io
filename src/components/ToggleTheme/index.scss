@@ -1,0 +1,74 @@
+$switch-width: 60px;
+$switch-height: 30px;
+$switch-padding: 3px;
+$slider-size: $switch-height - ($switch-padding * 2);
+$icon-size: 22px;
+$transition-speed: .3s;
+$bright-slider-color: rgb(213, 213, 213);
+$dark-slider-color: rgb(126, 126, 126);
+
+@function calc-slide-range($size) {
+  @return $switch-width - ($switch-height - $size) - $size;
+}
+
+label.switch {
+  position: relative;
+  display: inline-block;
+  width: $switch-width;
+  height: $switch-height;
+
+  input {
+    display: none;
+  }
+
+  .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    border-radius: calc($switch-height / 2);
+    background-color: $bright-slider-color;
+    transition: $transition-speed;
+
+    &::before {
+      position: absolute;
+      content: "";
+      bottom: $switch-padding;
+      left: $switch-padding;
+      height: $slider-size;
+      width: $slider-size;
+      background-color: $dark-slider-color;
+      border-radius: 50%;
+      z-index: 1;
+      transition: $transition-speed;
+    }
+  }
+  
+  input:checked + .slider {
+    background-color: $dark-slider-color;
+    &::before {
+      background-color: $bright-slider-color;
+      transform: translateX(calc-slide-range($slider-size));
+    }
+  }
+
+  .icon {
+    $icon-padding: calc(($switch-height - $icon-size) / 2);
+    position: absolute;
+    stroke: $dark-slider-color;
+    color: $dark-slider-color;
+    width: $icon-size;
+    height: auto;
+    top: $icon-padding;
+    right: $icon-padding;
+    transition: $transition-speed;
+
+    &.checked {
+      stroke: $bright-slider-color;
+      color: $bright-slider-color;
+      transform: translateX(-(calc-slide-range($icon-size)));
+    }
+  }
+}
