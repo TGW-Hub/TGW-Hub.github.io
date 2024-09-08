@@ -28,27 +28,27 @@ const { title = "TGW Hub", lock = false } = Astro.props;
 	<body style={{ overflow: lock ? "hidden" : "scroll" }}>
 		<slot name="navbar"/>
 		<slot />
-		<script>
-			window.onload = () => {
-				const root = document.documentElement;
-				const localStorageTheme = localStorage.getItem("html-theme");
-				if(!localStorageTheme) {
-					if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-						/* User prefers dark mode */
-						localStorage.setItem("html-theme", "dark");
-						root.setAttribute("html-dark-theme", "");
-					} else { 
-						/* User prefers light mode (default)	*/ 
-						localStorage.setItem("html-theme", "light");
-					}
-				}
-				
-				if(localStorageTheme === "dark") {
+	</body>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const root = document.documentElement;
+			const localStorageTheme = localStorage.getItem("html-theme");
+			if(!localStorageTheme) {
+				if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					/* User prefers dark mode */
+					localStorage.setItem("html-theme", "dark");
 					root.setAttribute("html-dark-theme", "");
-				} else {
-					root.removeAttribute("html-dark-theme");
+				} else { 
+					/* User prefers light mode (default)	*/ 
+					localStorage.setItem("html-theme", "light");
 				}
 			}
-		</script>
-	</body>
+			
+			if(localStorageTheme === "dark") {
+				root.setAttribute("html-dark-theme", "");
+			} else {
+				root.removeAttribute("html-dark-theme");
+			}
+		})
+	</script>
 </html>
