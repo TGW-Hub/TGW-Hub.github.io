@@ -1,5 +1,7 @@
 ---
+import ToggleTheme from '../ToggleTheme/index.jsx';
 import { resolveRoot } from '@util-lib/util';
+import "./index.scss";
 
 interface Props {
   hide?: boolean,
@@ -7,7 +9,6 @@ interface Props {
 }
 const { hide = false, pageId } = Astro.props;
 const TGW_LOGO_PATH = resolveRoot("tgw-logo.svg");
-console.log(TGW_LOGO_PATH);
 ---
 
 <div class={`fixed-bar ${!hide ? "show" : ""}`} data-page-id={pageId}>
@@ -15,7 +16,7 @@ console.log(TGW_LOGO_PATH);
     <img src={TGW_LOGO_PATH} alt="tgw logo">
   </div>
   <div class="toggle-btn-container">
-    <!-- TODO: add toggle button -->
+    <ToggleTheme client:load/>
   </div>
 </div>
 
@@ -39,7 +40,7 @@ console.log(TGW_LOGO_PATH);
   })
 </script>
 
-<style lang="scss">
+<!-- <style lang="scss">
   [html-dark-theme] .fixed-bar {
     background-color: white;
   }
@@ -52,7 +53,7 @@ console.log(TGW_LOGO_PATH);
     display: flex;
     justify-content: space-between;
     z-index: 100;
-    background-color: rgba(0,0,0,.7);
+    background-color: rgba(0, 0, 0, 0.85);
     transition: .3s;
 
     &.show {
@@ -60,11 +61,18 @@ console.log(TGW_LOGO_PATH);
     }
 
     .logo-container {
-      padding: 20px;
+      padding: 15px 20px;
       img {
         display: block;
-        width: 30px;
+        width: 36px;
       }
     }
+    
+    .toggle-btn-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+    }
   }
-</style>
+</style> -->

@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import icon from "astro-icon";
+import preact from "@astrojs/preact";
 import { imagetools } from "vite-imagetools";
 import dotenv from "dotenv";
 
@@ -13,6 +14,7 @@ export default defineConfig({
   },
   integrations: [
     icon(),
+    preact(),
   ],
   vite: {
     plugins: [
