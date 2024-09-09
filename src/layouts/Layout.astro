@@ -36,18 +36,19 @@ const { title = "TGW Hub", lock = false } = Astro.props;
 			if(!localStorageTheme) {
 				if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
 					/* User prefers dark mode */
+					console.log("setting dark theme");
 					localStorage.setItem("html-theme", "dark");
 					root.setAttribute("html-dark-theme", "");
 				} else { 
 					/* User prefers light mode (default)	*/ 
 					localStorage.setItem("html-theme", "light");
 				}
-			}
-			
-			if(localStorageTheme === "dark") {
-				root.setAttribute("html-dark-theme", "");
 			} else {
-				root.removeAttribute("html-dark-theme");
+				if(localStorageTheme === "dark") {
+					root.setAttribute("html-dark-theme", "");
+				} else {
+					root.removeAttribute("html-dark-theme");
+				}
 			}
 		})
 	</script>
