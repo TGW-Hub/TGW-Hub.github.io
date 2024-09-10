@@ -2,7 +2,9 @@
   --header-large: 40px;
   --header-medium: 30px;
   --header-small: 22px;
-  --default-bg-color: #f9f9f9;
+}
+html:not([html-dark-theme]) {
+  --default-bg-color: #dddddd;
   --default-color: black;
 }
 [html-dark-theme] {

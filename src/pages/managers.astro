@@ -5,21 +5,21 @@ import PageDescription from "../components/PageDescription.astro";
 import Button from "../components/Button.astro";
 import IntroductionBox from "../components/managersPage/IntroductionBox.astro";
 import { members } from "../components/managersPage/managersInfo";
-
+import TGWLogo from "../components/TGWLogo.astro";
+import ToggleTheme from "../components/ToggleTheme";
 import { resolveRoot } from "@util-lib/util";
+
 const indexPageLink = resolveRoot();
-const TGW_LOGO = resolveRoot("tgw-logo.svg");
 ---
 
 <Layout lock>
 <FullScreenPage pagePadding="0px">
     <div class="flex-container">
         <div class="page-description">
-            <span class="tgw-logo-container">
-                <a href={indexPageLink}>
-                    <img src={TGW_LOGO} alt="tgw-icon">
-                </a>
-            </span>
+            <div class="tgw-logo-container">
+                <TGWLogo width={50}/>
+                <ToggleTheme client:load/>
+            </div>
             <PageDescription 
                 title="managers" 
                 description="マネージャーとデベロッパーからの挨拶と自己紹介です。これからもよろしくお願いします。"
@@ -70,13 +70,20 @@ const TGW_LOGO = resolveRoot("tgw-logo.svg");
             flex-direction: column;
 
             .tgw-logo-container {
+                width: 100%;
+                padding: 0 30px;
                 margin-bottom: 30px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
             }
         }
 
         .box-container {
             flex: 1;
             max-height: 100vh;
+            padding-top: 50px;
+            padding-bottom: 50px;
             overflow-y: scroll;
             overflow-x: hidden;
             display: flex;
@@ -103,14 +110,21 @@ const TGW_LOGO = resolveRoot("tgw-logo.svg");
             .box-container {
                 max-height: none;
                 overflow: visible;
-                margin-bottom: 2rem;
             }
         }
     }
 
     @media screen and (max-width: 620px) {
-        .tgw-logo-container img {
-            width: 80px;
+        .flex-container {
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            .page-description {
+                margin-top: 14px;
+                .tgw-logo-container {
+                    padding: 0;
+                }
+            }
         }
     }
 </style>

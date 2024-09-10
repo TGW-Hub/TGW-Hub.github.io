@@ -62,4 +62,20 @@ const linkToManagers = resolveRoot("managers");
       }
     }
   }
+  
+  @media screen and (max-width: 600px) {
+    .flex-container {
+      flex-direction: column;
+
+      .page-description {
+        padding: 0px 0px 30px;
+        flex: none;
+      }
+
+      .icon-wrapper {
+        max-width: 250px;
+        flex: none;
+      }
+    }
+  }
 </style>
