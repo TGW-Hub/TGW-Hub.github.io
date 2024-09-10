@@ -3,7 +3,7 @@
 $light-mode-icon: #00b009;
 $dark-mode-icon: #41c448;
 
-$light-mode-intro-box-bg-color: #dfdfdf;
+$light-mode-intro-box-bg-color: #cecece;
 $dark-mode-intro-box-bg-color: #434343;
 
 [data-icon] {
@@ -16,10 +16,12 @@ $dark-mode-intro-box-bg-color: #434343;
 
 [html-dark-theme] .introduction-box {
   background-color: $dark-mode-intro-box-bg-color;
+  // box-shadow: none;
 }
 
 .introduction-box {
   background-color: $light-mode-intro-box-bg-color;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.4);
   align-self: stretch;
   display: flex;
   flex-direction: row;

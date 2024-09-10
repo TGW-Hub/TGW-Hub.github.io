@@ -2,6 +2,8 @@
 @mixin custom-scrollbar($scrollbarMargin: 10px, $scrollbarWidth: 10px) {
   &::-webkit-scrollbar {
     width: $scrollbarWidth;
+    position: absolute;
+    left: -1px;
   }
   &::-webkit-scrollbar-button {
     display: none;

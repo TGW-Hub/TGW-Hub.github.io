@@ -37,11 +37,13 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: yarn install
-      - name: Build for forked repo
-        run: yarn run setenv --baseUrl ${{ github.event.repository.name }} && yarn run build
-      - name: Build for upstream repo
+      - name: Set root for forked repo
+        run: yarn run setenv --baseUrl ${{ github.event.repository.name }}
+      - name: Set root for upstream repo
         if: github.repository == 'TGW-Hub/TGW-Hub.github.io'
-        run: yarn run setenv && yarn run build
+        run: yarn run setenv
+      - name: Build
+        run: yarn run build
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
