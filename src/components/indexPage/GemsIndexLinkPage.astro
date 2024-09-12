@@ -1,31 +1,37 @@
 ---
 import FullScreenPage from "../../layouts/FullScreenPage.astro";
 import PageDescription from "../PageDescription.astro";
-import BibleImages from "@img/openBible.webp?fb";
+import Button from '../Button.astro';
+import seaImages from "@img/watersCoverTheSea.webp?fb";
 import { separateImageFormats } from "@util-lib/util";
 
-const { avif, webp, jpeg } = separateImageFormats(BibleImages, ["avif", "webp", "jpeg"]);
+const { avif, webp, jpeg } = separateImageFormats(seaImages, ["avif", "webp", "jpeg"]);
 ---
 
 <FullScreenPage>
   <div class="gemContent">
     <span class="linkBody">
       <PageDescription 
-        title="Gems Index"
+        title="TGW Index"
         description={[
           "TGWに寄せられた宝の索引",
           "グループ開設から現在までのすべてのコメントがここに"
         ]}
       />
-      <a class="tgwLink" href="https://kondo-kazushi.github.io/tgw-index"
-        >Check Now</a
-      >
+      <div class="gemContentButtonContainer">
+      <div class="button-container">
+        <Button
+          buttonText='いますぐ見る'
+          link={"https://kondo-kazushi.github.io/tgw-index#fromHub"}
+        />
+       </div>
+      </div>
     </span>
-    <!-- <img class="bibleImage" src={jpeg.src} /> -->
-    <picture class="bibleImage">
+    <!-- <img class="SeaImage" src={jpeg.src} /> -->
+    <picture class="seaImage">
       <source srcset={avif.src} type="image/avif">
       <source srcset={webp.src} type="images/webp">
-      <img src={jpeg.src} alt="開かれた聖書の画像"/>
+      <img src={jpeg.src} alt="水が海を覆っている"/>
     </picture>
   </div>
 </FullScreenPage>
@@ -35,7 +41,7 @@ const { avif, webp, jpeg } = separateImageFormats(BibleImages, ["avif", "webp", 
     font-family: "ヒラギノ丸ゴ ProN";
   }
 
-  .bibleImage img {
+  .seaImage img {
     width: 100%;
     object-fit: cover;
   }
@@ -53,6 +59,7 @@ const { avif, webp, jpeg } = separateImageFormats(BibleImages, ["avif", "webp", 
     }
   }
 
+  /*
   $tgwLinkButtonStyles: (
     light: (
       color: black,
@@ -72,6 +79,7 @@ const { avif, webp, jpeg } = separateImageFormats(BibleImages, ["avif", "webp", 
     background-color: map-get($styles, background-color);
     border: map-get($styles, border);
   }
+
 
   @media (prefers-color-scheme: dark) {
     .tgwLink {
@@ -96,23 +104,21 @@ const { avif, webp, jpeg } = separateImageFormats(BibleImages, ["avif", "webp", 
     }
   }
 
+  */
+
   @media screen and (min-width: 735px) {
     .gemContent {
       flex-direction: row;
       justify-content: space-around;
     }
 
-    .bibleImage {
+    .gemContentButtonContainer {
+    margin-left: 1rem;
+  }
+
+    .seaImage {
       max-width: 50%;
       overflow: hidden;
-
-      img {
-        transition: 0.35s;
-
-        &:hover {
-          transform: scale(1.02);
-        }
-      }
     }
 
     .linkBody {
@@ -126,7 +132,7 @@ const { avif, webp, jpeg } = separateImageFormats(BibleImages, ["avif", "webp", 
       justify-content: center;
     }
 
-    .bibleImage {
+    .seaImage {
       width: 75%;
       max-width: 400px;
     }
