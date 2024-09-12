@@ -6,7 +6,7 @@ import "./IntroductionBox.scss";
 
 interface Props {
   images: ImageFormats,
-  introducingWord: string,
+  introducingWord: string | string[],
   borned: [number, number, number],
   fullname: string,
   roles: Array<RoleType>,
@@ -48,7 +48,15 @@ const { avif, webp, jpeg } = images;
     <div>
       <h4 class="japanese-custom-font">{fullname}</h4>
       <p class="birthday japanese-handwriting-font">{`${formattedBirthday}`}</p>
-      <h5 class="japanese-custom-font">{introducingWord}</h5>
+      <h5 class="japanese-custom-font">
+        {
+          typeof introducingWord === "string" ? 
+          introducingWord :
+          introducingWord.map(w => (
+            <>{w}<br/></>
+          ))
+        }
+      </h5>
     </div>
     <div class="icon-container">
       <a href={lineAccountLink}>

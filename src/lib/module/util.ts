@@ -9,6 +9,7 @@ export function getIntroduction(filename: string): string {
   const text = readFileSync(resolvedPath, 'utf-8');
   return text.trim();
 }
+export const getIntroductionSeparateLine: (filename: string) => string[] = (filename) => getIntroduction(filename).split("\n");
 
 export function separateImageFormats<T extends { format: P }, P extends string>(
   images: T[],
