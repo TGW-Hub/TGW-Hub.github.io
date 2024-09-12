@@ -1,6 +1,7 @@
 ---
 import FullScreenPage from "../../layouts/FullScreenPage.astro";
 import PageDescription from "../PageDescription.astro";
+import Button from '../Button.astro';
 import BibleImages from "@img/openBible.webp?fb";
 import { separateImageFormats } from "@util-lib/util";
 
@@ -17,9 +18,14 @@ const { avif, webp, jpeg } = separateImageFormats(BibleImages, ["avif", "webp", 
           "グループ開設から現在までのすべてのコメントがここに"
         ]}
       />
-      <a class="tgwLink" href="https://kondo-kazushi.github.io/tgw-index"
-        >Check Now</a
-      >
+      <div class="gemContentButtonContainer">
+      <div class="button-container">
+        <Button
+          buttonText='いますぐ見る'
+          link={"https://kondo-kazushi.github.io/tgw-index"}
+        />
+       </div>
+      </div>
     </span>
     <!-- <img class="bibleImage" src={jpeg.src} /> -->
     <picture class="bibleImage">
@@ -53,6 +59,7 @@ const { avif, webp, jpeg } = separateImageFormats(BibleImages, ["avif", "webp", 
     }
   }
 
+  /*
   $tgwLinkButtonStyles: (
     light: (
       color: black,
@@ -72,6 +79,7 @@ const { avif, webp, jpeg } = separateImageFormats(BibleImages, ["avif", "webp", 
     background-color: map-get($styles, background-color);
     border: map-get($styles, border);
   }
+
 
   @media (prefers-color-scheme: dark) {
     .tgwLink {
@@ -96,11 +104,17 @@ const { avif, webp, jpeg } = separateImageFormats(BibleImages, ["avif", "webp", 
     }
   }
 
+  */
+
   @media screen and (min-width: 735px) {
     .gemContent {
       flex-direction: row;
       justify-content: space-around;
     }
+
+    .gemContentButtonContainer {
+    margin-left: 1rem;
+  }
 
     .bibleImage {
       max-width: 50%;
