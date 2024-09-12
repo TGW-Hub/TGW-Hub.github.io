@@ -4,7 +4,7 @@ import MikiyaSakodaImages from "./images/mikiya-sakoda.jpg?fb";
 import ShunIwashitaImages from "./images/shun-iwashita.jpg?fb";
 import HarukiNebuImages from "./images/haruki-nebu.jpg?fb";
 
-import { getIntroduction, separateImageFormats } from "@util-lib/util";
+import { getIntroduction, separateImageFormats, getIntroductionSeparateLine as getIntroLines } from "@util-lib/util";
 
 export type RoleType = "マネージャー" | "デベロッパー";
 export type ImageFormats = { 
