@@ -10,6 +10,7 @@ const scrollCSS = enableScroll ? `overflow-y: scroll;` : "";
 ---
 
 <section class="fullscreen" style={`--bg-color: ${backgroundColor};`}>
+  <slot name="background"/>
   <div 
     class="container" 
     style={`padding: ${pagePadding}; ${scrollCSS}`}
@@ -24,6 +25,7 @@ const scrollCSS = enableScroll ? `overflow-y: scroll;` : "";
     width: 100vw;
     min-height: 100vh;
     background-color: var(--default-bg-color);
+    position: relative;
   }
   .container {
     width: 100vw;

@@ -34,3 +34,9 @@
   object-fit: cover;
   z-index: $z-index;
 }
+
+@mixin dark-theme() {
+  :global([html-dark-theme]) & {
+    @content;
+  }
+}
