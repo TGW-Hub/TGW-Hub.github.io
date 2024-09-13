@@ -33,7 +33,9 @@ export function generateRandomID(bytes: number) {
   return randomBytes(bytes).toString("hex");
 }
 
+const root = process.env.ROOT_NAME || "/";
+
 export function resolveRoot(publicFile: string = "") {
-  const filePath = path.resolve(process.env.ROOT_NAME, publicFile);
+  const filePath = path.resolve(root, publicFile);
   return filePath;
 }
