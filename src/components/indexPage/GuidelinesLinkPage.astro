@@ -1,11 +1,76 @@
 ---
 import FullScreenPage from '../../layouts/FullScreenPage.astro';
+import PageDescription from '../PageDescription.astro';
+import Button from '../Button.astro';
+import StyledBackground from '../StyledBackground.astro';
+import { resolveRoot } from '@util-lib/util';
+
+const linkToGuideline = resolveRoot("guideline");
 ---
 
-<FullScreenPage>
-  <h1 class="page-header">Guidelines</h1>
+<FullScreenPage pagePadding="0px">
+  <StyledBackground/>
+  <div class="flex-container">
+    <div class="page-description">
+      <PageDescription 
+        title="GUideline"
+        description={[
+          "TGWのガイドライン。",
+          // TODO: change to proper text
+        ]}
+      />
+      <!-- TODO: add style to button -->
+       <div class="button-container">
+        <Button
+          buttonText='ガイドラインを見る'
+          link={linkToGuideline}
+        />
+       </div>
+    </div>
+  </div>
 </FullScreenPage>
 
 <style lang="scss">
+  @import "@sass-lib/util-function";
 
+  .flex-container {
+    width: 100%;
+    height: 100%;
+    @include flex-container-center();
+    flex-direction: row-reverse;
+    padding: 20px;
+
+    .page-description {
+      flex: 1 1 60%;
+      max-width: 700px;
+      padding-left: 10%;
+    }
+
+    .icon-wrapper  {
+      flex: 1 1 40%;
+      max-width: 300px;
+      padding: 20px;
+
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .flex-container {
+      flex-direction: column;
+
+      .page-description {
+        padding: 0px 0px 30px;
+        flex: none;
+      }
+
+      .icon-wrapper {
+        max-width: 250px;
+        flex: none;
+      }
+    }
+  }
 </style>
