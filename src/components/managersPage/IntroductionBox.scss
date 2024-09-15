@@ -7,11 +7,19 @@ $light-mode-intro-box-bg-color: #cecece;
 $dark-mode-intro-box-bg-color: #434343;
 
 [data-icon] {
+  margin-left: 1rem;
+}
+
+[data-icon="hugeicons:line"] {
   display: block;
   @include adjust-color($light-mode-icon);
 }
-[html-dark-theme] [data-icon] {
+[html-dark-theme] [data-icon="hugeicons:line"] {
   @include adjust-color($dark-mode-icon);
+}
+
+[data-icon="hugeicons:instagram"] {
+  @include adjust-color(#d93078);
 }
 
 [html-dark-theme] .introduction-box {
