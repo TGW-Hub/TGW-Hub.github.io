@@ -39,7 +39,7 @@ const indexPageLink = resolveRoot();
         <div class="box-container-wrapper">
             <div class="box-container">
                 {
-                    Object.entries(members).map( ([i, { images, name, borned, introduction, lineAccountLink, roles }]) => (
+                    Object.entries(members).map( ([i, { images, name, borned, introduction, lineAccountLink, roles, instagramAccountLink, homepageLink }]) => (
                         <IntroductionBox 
                         images={images}
                         introducingWord={introduction}
@@ -47,6 +47,8 @@ const indexPageLink = resolveRoot();
                         borned={borned}
                         lineAccountLink={lineAccountLink}
                         roles={roles}
+                        instagramAccountLink={instagramAccountLink}
+                        homepageLink={homepageLink}
                         />
                     ))
                 }

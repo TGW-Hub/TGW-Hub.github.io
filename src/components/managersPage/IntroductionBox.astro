@@ -5,29 +5,40 @@ import type { RoleType, ImageFormats } from "./managersInfo";
 import "./IntroductionBox.scss";
 
 interface Props {
-  images: ImageFormats,
-  introducingWord: string | string[],
-  borned: [number, number, number],
-  fullname: string,
-  roles: Array<RoleType>,
-  lineAccountLink: string,
+  images: ImageFormats;
+  introducingWord: string | string[];
+  borned: [number, number, number];
+  fullname: string;
+  roles: Array<RoleType>;
+  lineAccountLink: string;
+  instagramAccountLink: string;
+  homepageLink: string;
 }
 
-const { images, introducingWord, borned, fullname, roles, lineAccountLink } = Astro.props;
+const {
+  images,
+  introducingWord,
+  borned,
+  fullname,
+  roles,
+  lineAccountLink,
+  instagramAccountLink,
+  homepageLink,
+} = Astro.props;
 const formattedBirthday = formattedBirthdayString(borned);
 // https://cssgradient.io
-const roleColor: { [key in typeof roles[number]]: string } = {
-  "マネージャー": "#009ef3",
-  "デベロッパー": "#8e26e5"
-}
+const roleColor: { [key in (typeof roles)[number]]: string } = {
+  マネージャー: "#009ef3",
+  デベロッパー: "#8e26e5",
+};
 const sortedRoles = roles.sort();
 const { avif, webp, jpeg } = images;
 ---
 
 <div class="introduction-box">
   <div class="roles-container">
-    { 
-      sortedRoles.map(roleName => (
+    {
+      sortedRoles.map((roleName) => (
         <div class="role" style={`--role-color: ${roleColor[roleName]};`}>
           <span>{roleName}</span>
         </div>
@@ -37,10 +48,10 @@ const { avif, webp, jpeg } = images;
   <span class="img-container">
     <figure class="img-wrapper">
       <picture>
-        <source srcset={avif.src} type="image/avif">
-        <source srcset={webp.src} type="image/webp">
-        { /** Fallback image **/ }
-        <img src={jpeg.src} alt="image">
+        <source srcset={avif.src} type="image/avif" />
+        <source srcset={webp.src} type="image/webp" />
+        {/** Fallback image **/}
+        <img src={jpeg.src} alt="image" />
       </picture>
     </figure>
   </span>
@@ -50,21 +61,39 @@ const { avif, webp, jpeg } = images;
       <p class="birthday japanese-handwriting-font">{`${formattedBirthday}`}</p>
       <h5 class="japanese-custom-font">
         {
-          typeof introducingWord === "string" ? 
-          introducingWord :
-          introducingWord.map(w => (
-            <>{w}<br/></>
-          ))
+          typeof introducingWord === "string"
+            ? introducingWord
+            : introducingWord.map((w) => (
+                <>
+                  {w}
+                  <br />
+                </>
+              ))
         }
       </h5>
     </div>
     <div class="icon-container">
+      {homepageLink && (
+        <a href={homepageLink}>
+          <Icon 
+            name="hugeicons:internet" 
+            size={35}
+          />
+        </a>
+      )}
+      {instagramAccountLink && (
+        <a href={instagramAccountLink}>
+          <Icon 
+            name="hugeicons:instagram" 
+            size={35}
+          />
+        </a>
+      )}
+      {lineAccountLink && (
       <a href={lineAccountLink}>
-        <Icon 
-          name="hugeicons:line" 
-          size={35}
-        />
+        <Icon name="hugeicons:line" size={35} />
       </a>
+      )}
     </div>
   </div>
 </div>
