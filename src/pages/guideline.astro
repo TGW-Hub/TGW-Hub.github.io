@@ -1,0 +1,306 @@
+---
+import Layout from "../layouts/Layout.astro";
+import FullScreenPage from "../layouts/FullScreenPage.astro";
+import PageDescription from "../components/PageDescription.astro";
+import Button from "../components/Button.astro";
+import TGWLogo from "../components/TGWLogo.astro";
+import ToggleTheme from "../components/ToggleTheme";
+import { resolveRoot } from "@util-lib/util";
+
+const indexPageLink = resolveRoot();
+const linkToManagers = resolveRoot("managers");
+---
+
+<Layout lock>
+    <FullScreenPage pagePadding="0px">
+        <div class="flex-container">
+            <div class="description-wrapper">
+                <div class="page-description">
+                    <div class="tgw-logo-container">
+                        <TGWLogo width={50} />
+                        <ToggleTheme client:load />
+                    </div>
+                    <PageDescription
+                        title="Guideline"
+                        description="TGWのガイドラインです。"
+                    />
+                    <div style="align-self: flex-end;">
+                        <Button
+                            uppercase
+                            buttonText="ホーム"
+                            theme="light"
+                            link={indexPageLink}
+                            borderRadius={5}
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-container-wrapper">
+                <div class="box-container">
+                    <section>
+                        <h1>はじめに</h1>
+                        <p>
+                            いつもグループに参加してくれている兄弟姉妹みなさんに感謝しています。<br
+                            />これからもグループで，励まし合い，良い交わりをしていくため，ガイドラインを作らせてもらいましたが、何かの規則とかではないので、自由に気軽に交友を楽しみましょう。<br
+                            />最後まで読んでもらえると嬉しいです。
+                        </p>
+                    </section>
+                    <section>
+                        <h1>新たにグループに入ってくださった方へ</h1>
+                        <p>
+                            このグループに参加してくださった方はまずグループノートに自己紹介を書いて欲しいです。自己紹介には、<br
+                            />を書いてください。その他の記載に関しては自由です。
+                        </p>
+                    </section>
+                    <section>
+                        <h1>グループの目的</h1>
+                        <p>
+                            このグループでは，若い同年代の仲間達で励まし合うことが目的です。奉仕の励みとなったことや宝石や「こんなことがあったよー」みたいなこと、雑談とかでもなんでも自由です。
+                        </p>
+                        <div>
+                            （<a
+                                href="https://wol.jw.org/ja/wol/b/r7/lp-j/nwtsty/16/2#study=discover&v=16:2:18"
+                                >ネヘミヤ2:18</a
+                            >,
+                            <a
+                                href="https://wol.jw.org/ja/wol/b/r7/lp-j/nwtsty/45/14#study=discover&v=45:14:19"
+                                >ローマ14:19</a
+                            >,
+                            <a
+                                href="https://wol.jw.org/ja/wol/d/r7/lp-j/1963523"
+                                >塔63 10/15 他のひとびとを励ます</a
+                            >）
+                        </div>
+                    </section>
+                    <section>
+                        <h1>イベントについて</h1>
+                        <p>
+                            イベントの企画・開催に関しては自由です。<br
+                            />どなたが企画・開催してくださっても大丈夫です！<br
+                            />参加も自由です！
+                        </p>
+                        <div>
+                            （<a
+                                href="https://wol.jw.org/ja/wol/b/r7/lp-j/nwtsty/19/133#study=discover&v=19:133:1-19:133:1"
+                                >詩編133:1</a
+                            >,
+                            <a
+                                href="https://wol.jw.org/ja/wol/b/r7/lp-j/nwtsty/46/10#study=discover&v=46:10:31"
+                                >コリント第一10:31</a
+                            >）
+                        </div>
+                    </section>
+                    <section>
+                        <h1>新たにグループにメンバーを追加する</h1>
+                        <p>
+                            新たなメンバー追加、大歓迎です！<br
+                            />グループに参加してくださる方の細かい条件はありません。<br
+                            />グループに招待する場合は、仲介してくださる運営メンバーのいずれかに連絡してください。
+                        </p>
+                        <div>
+                            <a class="toManagersLink" href={linkToManagers}
+                                >運営メンバーを確認する</a
+                            >
+                        </div>
+                        <div>
+                            （<a
+                                href="https://www.jw.org/finder?wtlocale=J&docid=502017120&srcid=share"
+                                >若尋 今いる友達で十分？</a
+                            >,
+                            <a
+                                href="https://www.jw.org/finder?wtlocale=J&docid=1101971129&srcid=share"
+                                >教29章</a
+                            >）
+                        </div>
+                    </section>
+                    <section>
+                        <h1>グループからの退出</h1>
+                        <p>
+                            それぞれの事情もあると思いますので，グループからの退出も再加入も自由です。<br
+                            />ただ退出の場合は、仲介役の兄弟に一度連絡をしてもらえると助かります。
+                        </p>
+                    </section>
+                    <section>
+                        <h1>最後に</h1>
+                        <p>
+                            最後まで読んでくださりありがとうございます！<br
+                            />これからも皆さんと爽やかな交わりができたら嬉しいです！
+                        </p>
+                        <div>
+                            （<a
+                                href="https://wol.jw.org/ja/wol/d/r7/lp-j/2019640"
+                                >塔研19/11 研究記事44</a
+                            >,
+                            <a
+                                href="https://wol.jw.org/ja/wol/d/r7/lp-j/1996201"
+                                >塔96 3/15 あなたは永続的な友情を楽しめます</a
+                            >,
+                            <a
+                                href="https://wol.jw.org/ja/wol/b/r7/lp-j/nwtsty/20/17#study=discover&v=20:17:17-20:17:17"
+                                >格言17:17</a
+                            >;
+                            <a
+                                href="https://wol.jw.org/ja/wol/b/r7/lp-j/nwtsty/20/27#study=discover&v=20:27:17-20:27:17"
+                                >27:17</a
+                            >,
+                            <a
+                                href="https://wol.jw.org/ja/wol/b/r7/lp-j/nwtsty/45/12#study=discover&v=45:12:10"
+                                >ローマ12:10</a
+                            >）
+                        </div>
+                    </section>
+                    <footer>
+                        <hr>
+                        <a
+                            class="downloadLink"
+                            href="./files/Guideline.pdf"
+                            download="TGWガイドライン"
+                            >このガイドラインをダウンロードする</a
+                        >
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </FullScreenPage>
+</Layout>
+
+<style lang="scss">
+    @import "@sass-lib/util-function";
+    @import "@sass-lib/scrollbar";
+
+    .flex-container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin: auto;
+
+        .description-wrapper {
+            flex: 1 1 40%;
+            background-color: rgb(191, 191, 191);
+            display: flex;
+            justify-content: flex-end;
+            box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.6);
+            padding-left: 10px;
+            padding-right: 30px;
+            @include dark-theme() {
+                background-color: rgb(40, 40, 40);
+            }
+
+            .page-description {
+                width: 100%;
+                max-width: 400px;
+                @include flex-container-center();
+                flex-direction: column;
+            }
+            .tgw-logo-container {
+                width: 100%;
+                padding: 0 30px;
+                margin-bottom: 30px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .box-container-wrapper {
+            flex: 1 1 60%;
+
+            .box-container {
+                width: 100%;
+                max-height: 100vh;
+                padding-top: 50px;
+                padding-bottom: 50px;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: stretch;
+                flex-wrap: wrap;
+                @include custom-scrollbar(30px);
+                padding-left: 1rem;
+                padding: 1rem;
+
+                h1 {
+                    font-size: x-large;
+                    font-weight: bold;
+                    text-decoration: underline;
+                    text-decoration-thickness: 3px;
+                    text-underline-offset: 8px;
+                    margin-bottom: 2rem;
+                }
+
+                section {
+                    width: 100%;
+                    margin: 1rem;
+                }
+
+                div {
+                    a {
+                        color: #4a6da7;
+                        @include dark-theme() {
+                            color: #9fb9e3;
+                        }
+                    }
+                    .toManagersLink {
+                        font-size: large;
+                        margin-bottom: 2px;
+                    }
+                    text-align: right;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 930px) {
+        .flex-container {
+            flex-direction: column;
+            overflow-y: scroll;
+            max-height: 100vh;
+            @include custom-scrollbar(30px);
+
+            .description-wrapper {
+                margin: 30px auto 10px;
+                width: 100%;
+                max-width: 700px;
+                padding: 0 20px;
+                background-color: transparent !important;
+                justify-content: center;
+                box-shadow: none;
+
+                .page-description {
+                    max-width: none;
+                }
+            }
+
+            .box-container-wrapper {
+                .box-container {
+                    max-height: none;
+                    overflow: visible;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 620px) {
+        .flex-container {
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            .description-wrapper {
+                margin-top: 14px;
+                .tgw-logo-container {
+                    padding: 0;
+                }
+            }
+        }
+    }
+
+    .downloadLink {
+        font-size: large;
+        color: #4a6da7;
+        @include dark-theme() {
+            color: #9fb9e3;
+        }
+    }
+</style>
