@@ -9,6 +9,7 @@ import { resolveRoot } from "@util-lib/util";
 
 const indexPageLink = resolveRoot();
 const linkToManagers = resolveRoot("managers");
+const guidelineFile = resolveRoot("Guideline.pdf");
 ---
 
 <Layout lock>
@@ -154,7 +155,7 @@ const linkToManagers = resolveRoot("managers");
                         <hr>
                         <a
                             class="downloadLink"
-                            href="./files/Guideline.pdf"
+                            href={guidelineFile}
                             download="TGWガイドライン"
                             >このガイドラインをダウンロードする</a
                         >
