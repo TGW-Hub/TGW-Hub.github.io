@@ -23,9 +23,10 @@ const guidelineFile = resolveRoot("Guideline.pdf");
                     </div>
                     <PageDescription
                         title="Guideline"
-                        description="TGWのガイドラインです。"
+                        description="TGWのガイドラインです。いつもグループに参加してくれている兄弟姉妹みなさんに感謝しています。これからもグループで，励まし合い，良い交わりをしていくため，ガイドラインを作らせてもらいましたが、何かの規則とかではないので、自由に気軽に交友を楽しみましょう。最後まで読んでもらえると嬉しいです。"
                     />
-                    <div style="align-self: flex-end;">
+                    <div style="align-self: flex-end; text-align: right;">
+                        <p class="lastEdited">最終更新:2024/09/16</p>
                         <Button
                             uppercase
                             buttonText="ホーム"
@@ -39,14 +40,6 @@ const guidelineFile = resolveRoot("Guideline.pdf");
 
             <div class="box-container-wrapper">
                 <div class="box-container">
-                    <section>
-                        <h1>はじめに</h1>
-                        <p>
-                            いつもグループに参加してくれている兄弟姉妹みなさんに感謝しています。<br
-                            />これからもグループで，励まし合い，良い交わりをしていくため，ガイドラインを作らせてもらいましたが、何かの規則とかではないので、自由に気軽に交友を楽しみましょう。<br
-                            />最後まで読んでもらえると嬉しいです。
-                        </p>
-                    </section>
                     <section>
                         <h1>新たにグループに入ってくださった方へ</h1>
                         <p>
@@ -243,6 +236,10 @@ const guidelineFile = resolveRoot("Guideline.pdf");
                             color: #9fb9e3;
                         }
                     }
+
+                    a:hover {
+                        text-decoration: underline;
+                    }
                     .toManagersLink {
                         font-size: large;
                         margin-bottom: 2px;
@@ -304,4 +301,14 @@ const guidelineFile = resolveRoot("Guideline.pdf");
             color: #9fb9e3;
         }
     }
+
+    .downloadLink:hover {
+        text-decoration: underline;
+    }
+
+    .lastEdited {
+        padding-bottom: 1rem;
+        text-align: right
+    }
+
 </style>
