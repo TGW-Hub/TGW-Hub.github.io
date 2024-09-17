@@ -2,7 +2,7 @@
 ---
 
 <div class="fill-entire-back">
-  <div id="background"></div>
+  <div class="background"></div>
 </div>
 
 <script>
@@ -61,17 +61,24 @@
     }, (t * 1000) + delay + 100);
   }
 
-  const bgDiv = document.getElementById("background");
+  const containers = document.getElementsByClassName("fill-entire-back");
+  const bgDivs = [];
+  Array.prototype.forEach.call(containers, function(element) {
+    const background = element.getElementsByClassName("background")[0];
+    bgDivs.push(background);
+  })
 
   let intervalId;
   function run() {
     intervalId = setInterval(() => {
-      if(Math.random() * 10 < 4) {
-        const randomNumber = randomRange(3, 7);
-        for(let i=0; i<randomNumber; i++) {
-          generateRandom(bgDiv);
+      bgDivs.forEach(div => {
+        if(Math.random() * 10 < 4) {
+          const randomNumber = randomRange(3, 7);
+          for(let i=0; i<randomNumber; i++) {
+            generateRandom(div);
+          }
         }
-      }
+      })
     }, 1500);
   }
   function stop() {
@@ -100,7 +107,7 @@
     mask-image: linear-gradient(to top, rgba(0,0,01), transparent);
     filter: brightness(.8) blur(5px);
 
-    #background {
+    .background {
       @include full-width-height-relative();
 
       :global(.circle) {

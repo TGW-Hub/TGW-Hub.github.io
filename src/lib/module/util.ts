@@ -29,7 +29,7 @@ export function separateImageFormats<T extends { format: P }, P extends string>(
   return obj;
 }
 
-export function generateRandomID(bytes: number) {
+export function generateRandomID(bytes: number = 8) {
   return randomBytes(bytes).toString("hex");
 }
 
