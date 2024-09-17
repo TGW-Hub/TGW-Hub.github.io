@@ -24,6 +24,7 @@ const { title = "TGW Hub", lock = false } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href={FAVICON_PATH} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<script src="../javascript/bundle/bundle.min.js"></script>
 	</head>
 	<body style={{ overflow: lock ? "hidden" : "scroll" }}>
 		<slot name="navbar"/>
