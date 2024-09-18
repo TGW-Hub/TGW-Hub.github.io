@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FullScreenPage from '../layouts/FullScreenPage.astro';
+import LoginForm from '../components/LoginForm';
+import { readFileSync } from 'node:fs';
+import { resolveRoot } from '@util-lib/util';
+import bcrypt from 'bcryptjs';
+
+const hashedPassword = readFileSync('./passwd', 'utf-8');
+const homeUrl = resolveRoot();
+const SECRET = import.meta.env.SECRET_KEY || "default-key";
+const salt = bcrypt.genSaltSync(8);
+const HASHED_SECRET = bcrypt.hashSync(SECRET, salt);
+---
+
+<Layout loginPage>
+<FullScreenPage>
+  <LoginForm 
+    hashedPassword={hashedPassword}
+    homeUrl={homeUrl}
+    hashedSecretKey={HASHED_SECRET}
+    client:load
+  />
+</FullScreenPage>
+</Layout>

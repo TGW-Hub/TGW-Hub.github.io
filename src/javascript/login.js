@@ -1,14 +1,26 @@
 const bcrypt = require('bcryptjs');
 const fs = require('fs');
+const path = require('path');
+const Cookies = require('js-cookie');
 
-const hashedPassword = fs.readFileSync("./passwd", 'utf-8');
+const root = process.env.ROOT_NAME || "/";
+const LOGIN_PATH = path.resolve(root, 'login');
 
-const root = document.documentElement;
-root.setAttribute("html-hide-document", "");
-const password = prompt("パスワードを入れてください:");
-
-if(bcrypt.compareSync(password, hashedPassword)) {
-  console.log("ログイン！");
-} else {
-  console.log("だめ");
-}
+document.addEventListener("DOMContentLoaded", function() {
+  const loginStatus = Cookies.get("login-status");
+  const SECRET = process.env.SECRET_KEY || "default-key";
+  if(!loginStatus) {
+    window.location = LOGIN_PATH;
+    return;
+  }
+  bcrypt.compare(SECRET, loginStatus, (err, res) => {
+    if(err) {
+      console.error("Error:", err);
+      window.location = LOGIN_PATH;
+    }
+    if(!res) {
+      window.location = LOGIN_PATH;
+    }
+    return;
+  });
+})
