@@ -8,7 +8,9 @@
     "setenv": "node set-env.cjs",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "bundle-login": "node bundle-script.cjs login.js",
+    "astro": "astro",
+    "set-pass": "node set-password.cjs"
   },
   "dependencies": {
     "@fontsource/pacifico": "^5.0.14",
@@ -17,7 +19,10 @@
     "@iconify-json/hugeicons": "^1.1.1",
     "@preact/signals": "^1.3.0",
     "astro": "^4.14.5",
+    "bcryptjs": "^2.4.3",
+    "crypto-browserify": "^3.12.0",
     "dotenv": "^16.4.5",
+    "js-cookie": "^3.0.5",
     "luxon": "^3.5.0",
     "preact": "^10.23.2"
   },
@@ -26,8 +31,12 @@
     "@astrojs/preact": "^3.5.3",
     "@types/node": "^22.5.4",
     "astro-icon": "^1.1.1",
+    "brfs": "^2.0.2",
+    "browserify": "^17.0.0",
+    "envify": "^4.1.0",
     "sass": "^1.77.8",
-    "typescript": "^5.5.4",
+    "typescript": "^5.6.2",
+    "uglify-js": "^3.19.3",
     "vite-imagetools": "^7.0.4"
   }
 }

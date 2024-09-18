@@ -6,13 +6,15 @@ import '@sass-lib/global.scss';
 
 import { resolveRoot } from '@util-lib/util';
 const FAVICON_PATH = resolveRoot("favicon.svg");
+const PATH_TO_LOGIN_SCRIPT = resolveRoot("javascript/login-bundle.min.js");
 
 interface Props {
 	title?: string;
 	lock?: boolean;
+	loginPage?: boolean;
 }
 
-const { title = "TGW Hub", lock = false } = Astro.props;
+const { title = "TGW Hub", lock = false, loginPage = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -24,6 +26,10 @@ const { title = "TGW Hub", lock = false } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href={FAVICON_PATH} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		{
+			!loginPage &&
+			<script src={PATH_TO_LOGIN_SCRIPT}></script>
+		}
 	</head>
 	<body style={{ overflow: lock ? "hidden" : "scroll" }}>
 		<slot name="navbar"/>
