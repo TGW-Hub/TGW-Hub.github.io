@@ -6,17 +6,14 @@ const path = require('path');
 const envify = require('envify/custom');
 const uglifyJS = require('uglify-js');
 
-const fileName = process.argv[2];
-if(!fileName) {
-  console.error("You need to provide the file name inside of src/javascript");
-  process.exit();
-}
-const fileNameWithoutExt = fileName.split(".")[0];
-const inputFile = path.resolve(__dirname, "src/javascript", fileName);
-const outputFile = path.resolve(__dirname, "public/javascript", `${fileNameWithoutExt}-bundle.min.js`);
+const files = ["login.js"];
+
+const resolveFile = (fileName) => path.resolve(__dirname, "src/javascript", fileName);
+const inputFiles = files.map(resolveFile);
+const outputFile = path.resolve(__dirname, "public/javascript/bundle.min.js");
 
 browserify({
-  entries: [inputFile],
+  entries: inputFiles,
 })
   .require('crypto-browserify', { expose: 'crypto' })
   .transform(envify(process.env))

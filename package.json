@@ -8,7 +8,7 @@
     "setenv": "node set-env.cjs",
     "build": "astro build",
     "preview": "astro preview",
-    "bundle-login": "node bundle-script.cjs login.js",
+    "bundle-js": "node bundle-script.cjs",
     "astro": "astro",
     "set-pass": "node set-password.cjs"
   },

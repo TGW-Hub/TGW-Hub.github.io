@@ -43,7 +43,7 @@ jobs:
         if: github.repository == 'TGW-Hub/TGW-Hub.github.io'
         run: yarn run setenv
       - name: Bundle login script
-        run: yarn run bundle-login
+        run: yarn run bundle-js
       - name: Build
         run: yarn run build
       - name: Setup Pages
