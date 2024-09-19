@@ -3,19 +3,24 @@ import { resolveRoot } from '@util-lib/util';
 
 interface Props {
   width?: number;
+  href?: string;
 }
-const { width = 30 } = Astro.props;
 
-const indexPageLink = resolveRoot();
 const TGWLogoPath = resolveRoot("tgw-logo.svg");
+const indexPageLink = resolveRoot();
+
+const { width = 30, href = indexPageLink } = Astro.props;
 ---
 
-<a href={indexPageLink}>
-  <img src={TGWLogoPath} alt="tgw-logo" width={`${width}px`}>
+<a href={href}>
+  <img src={TGWLogoPath} alt="tgw-logo" width={`${width}px`} tgw-logo/>
 </a>
 
 <style lang="scss">
-  img {
+  a {
     display: inline-block;
+  }
+  img {
+    display: block;
   }
 </style>

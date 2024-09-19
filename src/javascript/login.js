@@ -1,5 +1,4 @@
 const bcrypt = require('bcryptjs');
-const fs = require('fs');
 const path = require('path');
 const Cookies = require('js-cookie');
 
